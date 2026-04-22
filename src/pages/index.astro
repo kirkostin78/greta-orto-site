@@ -1,6 +1,6 @@
 ---
-const title = "Грета Орто — клиника ортодонтии в Санкт-Петербурге";
-const description = "Современная ортодонтия в центре Санкт-Петербурга. Элайнеры, брекет-системы, комплексная стоматология. Скоро здесь появится новый сайт.";
+const title = "Грета Орто — центр прозрачной ортодонтии в Санкт-Петербурге";
+const description = "Центр прозрачной ортодонтии в Санкт-Петербурге. Элайнеры, брекет-системы, комплексная стоматология. Скоро здесь появится новый сайт.";
 ---
 
 <!doctype html>
@@ -23,9 +23,8 @@ const description = "Современная ортодонтия в центре
 	</head>
 	<body>
 		<main>
-			<div class="butterfly" aria-hidden="true">✦</div>
-			<h1>Грета&nbsp;Орто</h1>
-			<p class="tagline">Клиника ортодонтии в&nbsp;Санкт-Петербурге</p>
+			<img class="logo" src="/greta-orto-logo.png" alt="Логотип Грета Орто" />
+			<p class="tagline">Центр прозрачной ортодонтии</p>
 			<p class="subtagline">Новый сайт в&nbsp;разработке. Скоро здесь появится полноценный&nbsp;ресурс.</p>
 			<a class="btn" href="https://gretaorto.ru" rel="noopener">Перейти на действующий сайт</a>
 			<footer>© Грета Орто · {new Date().getFullYear()}</footer>
@@ -54,18 +53,11 @@ const description = "Современная ортодонтия в центре
 				padding: 48px 24px;
 				text-align: center;
 			}
-			.butterfly {
-				font-size: 48px;
-				color: var(--gold);
-				margin-bottom: 24px;
-				line-height: 1;
-			}
-			h1 {
-				font-family: "Nunito", system-ui, sans-serif;
-				font-weight: 800;
-				font-size: clamp(40px, 8vw, 64px);
-				margin: 0 0 16px;
-				letter-spacing: -0.02em;
+			.logo {
+				display: block;
+				width: min(100%, 560px);
+				height: auto;
+				margin: 0 auto 24px;
 			}
 			.tagline {
 				font-size: 20px;
