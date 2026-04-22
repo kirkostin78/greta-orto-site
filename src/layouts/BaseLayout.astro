@@ -1,0 +1,176 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	noindex?: boolean;
+}
+
+const { title, description, noindex = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<header class="site-header">
+			<a class="brand" href="/">
+				<img src="/greta-orto-logo.png" alt="Грета Орто" />
+			</a>
+			<nav aria-label="Основная навигация">
+				<a href="/uslugi/elaynery-spb">Элайнеры</a>
+				<a href="/o-klinike">О клинике</a>
+				<a href="/contacts">Контакты</a>
+			</nav>
+		</header>
+
+		<main class="container">
+			<slot />
+		</main>
+
+		<footer class="site-footer">© Грета Орто · {new Date().getFullYear()}</footer>
+
+		<style is:global>
+			:root {
+				--gold: #b08a55;
+				--grey: #e2e2e2;
+				--light: #fafafa;
+				--dark: #2f2f2f;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: var(--light);
+				color: var(--dark);
+				font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+				-webkit-font-smoothing: antialiased;
+				line-height: 1.55;
+			}
+
+			.site-header {
+				position: sticky;
+				top: 0;
+				z-index: 10;
+				display: flex;
+				gap: 24px;
+				align-items: center;
+				justify-content: space-between;
+				padding: 14px 24px;
+				background: rgba(250, 250, 250, 0.95);
+				backdrop-filter: blur(8px);
+				border-bottom: 1px solid var(--grey);
+			}
+
+			.brand img {
+				display: block;
+				width: min(280px, 55vw);
+				height: auto;
+			}
+
+			nav {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px 18px;
+			}
+
+			nav a {
+				color: var(--dark);
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 14px;
+			}
+
+			nav a:hover {
+				color: var(--gold);
+			}
+
+			.container {
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 40px 24px 56px;
+			}
+
+			h1,
+			h2 {
+				font-family: "Nunito", system-ui, sans-serif;
+				line-height: 1.2;
+				margin: 0 0 16px;
+			}
+
+			h1 {
+				font-size: clamp(28px, 5vw, 44px);
+			}
+
+			h2 {
+				font-size: clamp(22px, 3.6vw, 30px);
+				margin-top: 42px;
+			}
+
+			p {
+				margin: 0 0 14px;
+			}
+
+			.card {
+				background: #fff;
+				border: 1px solid var(--grey);
+				border-radius: 12px;
+				padding: 22px;
+			}
+
+			.btn {
+				display: inline-block;
+				padding: 12px 20px;
+				background: var(--gold);
+				color: #fff;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: 700;
+				font-size: 15px;
+			}
+
+			.btn:hover {
+				background: #967449;
+			}
+
+			.site-footer {
+				padding: 24px;
+				text-align: center;
+				font-size: 13px;
+				color: #8f8f8f;
+				border-top: 1px solid var(--grey);
+			}
+
+			@media (max-width: 720px) {
+				.site-header {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+			}
+		</style>
+	</body>
+</html>
