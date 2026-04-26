@@ -1,0 +1,112 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import CTA from "../components/CTA.astro";
+
+interface Props {
+	title: string;
+	description: string;
+	h1: string;
+	brandName: string;
+	manufacturer?: string;
+	brandType: "aligners" | "braces";
+	lead?: string;
+	breadcrumbs?: { label: string; href?: string }[];
+	noindex?: boolean;
+}
+
+const {
+	title,
+	description,
+	h1,
+	brandName,
+	manufacturer,
+	brandType,
+	lead,
+	breadcrumbs = [],
+	noindex = true,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} noindex={noindex}>
+	<article class="brand-page">
+		<div class="container-narrow">
+			{breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+
+			<header class="brand-header">
+				<span class="brand-tag">
+					{brandType === "aligners" ? "Элайнеры" : "Брекет-система"}
+				</span>
+				<h1>{h1}</h1>
+				{lead && <p class="lead">{lead}</p>}
+				{
+					manufacturer && (
+						<dl class="brand-meta">
+							<dt>Производитель</dt>
+							<dd>{manufacturer}</dd>
+						</dl>
+					)
+				}
+			</header>
+
+			<div class="brand-body">
+				<slot />
+			</div>
+
+			<CTA
+				heading={`Установка ${brandName} в Санкт-Петербурге`}
+				text="Запишитесь на бесплатную консультацию ортодонта Греты Орто — рассчитаем стоимость и срок лечения."
+			/>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.brand-page {
+		padding: 28px 0 56px;
+	}
+
+	.brand-header {
+		margin-bottom: 28px;
+		padding-bottom: 22px;
+		border-bottom: 1px solid var(--grey);
+	}
+
+	.brand-tag {
+		display: inline-block;
+		padding: 5px 12px;
+		background: var(--cream);
+		color: var(--gold-dark);
+		border-radius: 999px;
+		font-size: 12px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.4px;
+		margin-bottom: 12px;
+	}
+
+	.lead {
+		font-size: 17px;
+		line-height: 1.55;
+		color: var(--text);
+		margin: 12px 0 12px;
+	}
+
+	.brand-meta {
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		gap: 4px 14px;
+		font-size: 14px;
+		margin: 12px 0 0;
+	}
+
+	.brand-meta dt {
+		color: var(--muted);
+	}
+
+	.brand-meta dd {
+		margin: 0;
+		color: var(--dark);
+		font-weight: 600;
+	}
+</style>

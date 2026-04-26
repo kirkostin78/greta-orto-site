@@ -1,0 +1,91 @@
+---
+import PillarLayout from "../../layouts/PillarLayout.astro";
+import CTA from "../../components/CTA.astro";
+
+const title = "Виды прикуса и его исправление — Грета Орто, СПб";
+const description =
+	"Правильный прикус и виды нарушений: дистальный, мезиальный, глубокий, перекрёстный, открытый. Диагностика и лечение в Санкт-Петербурге.";
+
+const types = [
+	{ href: "/prikus/distalnyj/", title: "Дистальный прикус", desc: "Верхняя челюсть выступает над нижней. Самое частое нарушение." },
+	{ href: "/prikus/mezialnyj/", title: "Мезиальный прикус", desc: "Нижняя челюсть выдвинута вперёд относительно верхней." },
+	{ href: "/prikus/glubokij/", title: "Глубокий прикус", desc: "Верхние резцы перекрывают нижние более чем на 1/3." },
+	{ href: "/prikus/perekrestnyj/", title: "Перекрёстный прикус", desc: "Зубы одного ряда заходят за зубы другого с боковой стороны." },
+	{ href: "/prikus/otkrytyj/", title: "Открытый прикус", desc: "Между верхними и нижними зубами остаётся щель при сомкнутых челюстях." },
+	{ href: "/prikus/skuchennost-zubov/", title: "Скученность зубов", desc: "Зубам не хватает места в челюсти, они «налезают» друг на друга." },
+];
+---
+
+<PillarLayout
+	title={title}
+	description={description}
+	h1="Прикус: виды, диагностика, исправление"
+	lead="Прикус — то, как смыкаются зубы верхней и нижней челюсти. От прикуса зависит не только внешний вид улыбки, но и здоровье зубов, дёсен, височно-нижнечелюстного сустава и осанка."
+	breadcrumbs={[{ label: "Главная", href: "/" }, { label: "Прикус" }]}
+>
+	<h2>Виды нарушений прикуса</h2>
+	<div class="bite-grid">
+		{
+			types.map((t) => (
+				<a class="bite-card" href={t.href}>
+					<h3>{t.title}</h3>
+					<p>{t.desc}</p>
+				</a>
+			))
+		}
+	</div>
+
+	<h2>Как проходит диагностика прикуса</h2>
+	<p>
+		Очный осмотр ортодонта, фото-протокол лица и зубов, 3D-сканирование, КЛКТ при необходимости. На
+		основе данных составляется индивидуальный план: брекеты, элайнеры, миниимпланты, в комплексных случаях —
+		совместно с гнатологом и хирургом.
+	</p>
+
+	<h2>Когда нужна гнатология</h2>
+	<p>
+		Если есть щелчки в суставе, ограничение открывания рта, головные боли — без работы с ВНЧС
+		исправление прикуса не даст стабильного результата. <a href="/gnatologiya/">Подробнее о гнатологии</a>.
+	</p>
+
+	<CTA />
+</PillarLayout>
+
+<style>
+	.bite-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 14px;
+		margin: 22px 0 8px;
+	}
+
+	.bite-card {
+		display: block;
+		padding: 18px 20px;
+		background: #fff;
+		border: 1px solid var(--grey);
+		border-radius: 10px;
+		text-decoration: none;
+		color: var(--text);
+		transition: border-color 0.15s, transform 0.15s;
+	}
+
+	.bite-card:hover {
+		border-color: var(--gold);
+		transform: translateY(-2px);
+		text-decoration: none;
+	}
+
+	.bite-card h3 {
+		margin: 0 0 6px;
+		font-size: 17px;
+		color: var(--dark);
+	}
+
+	.bite-card p {
+		margin: 0;
+		font-size: 14px;
+		color: var(--muted);
+		line-height: 1.5;
+	}
+</style>

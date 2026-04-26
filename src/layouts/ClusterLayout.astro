@@ -1,0 +1,96 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import CTA from "../components/CTA.astro";
+
+interface Props {
+	title: string;
+	description: string;
+	h1: string;
+	lead?: string;
+	breadcrumbs?: { label: string; href?: string }[];
+	noindex?: boolean;
+	updated?: string;
+	pillar?: { label: string; href: string };
+}
+
+const {
+	title,
+	description,
+	h1,
+	lead,
+	breadcrumbs = [],
+	noindex = true,
+	updated,
+	pillar,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} noindex={noindex}>
+	<article class="cluster">
+		<div class="container-narrow">
+			{breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+
+			<header class="cluster-header">
+				<h1>{h1}</h1>
+				{lead && <p class="lead">{lead}</p>}
+				{
+					updated && (
+						<div class="meta">
+							Обновлено: <time datetime={updated}>{updated}</time>
+						</div>
+					)
+				}
+			</header>
+
+			<div class="cluster-body">
+				<slot />
+			</div>
+
+			{
+				pillar && (
+					<aside class="back-to-pillar">
+						<a href={pillar.href}>← Все статьи раздела «{pillar.label}»</a>
+					</aside>
+				)
+			}
+
+			<CTA variant="compact" />
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.cluster {
+		padding: 28px 0 56px;
+	}
+
+	.cluster-header {
+		margin-bottom: 28px;
+	}
+
+	.lead {
+		font-size: 17px;
+		line-height: 1.55;
+		color: var(--text);
+		margin: 12px 0 6px;
+	}
+
+	.meta {
+		font-size: 13px;
+		color: var(--muted);
+	}
+
+	.back-to-pillar {
+		margin: 36px 0 12px;
+		padding: 14px 18px;
+		border-left: 3px solid var(--gold);
+		background: var(--grey-soft);
+		font-size: 14px;
+	}
+
+	.back-to-pillar a {
+		color: var(--dark);
+		font-weight: 600;
+	}
+</style>

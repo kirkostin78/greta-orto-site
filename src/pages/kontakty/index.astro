@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+
+const title = "Контакты — Грета Орто, Санкт-Петербург";
+const description = "Адрес клиники Грета Орто в Санкт-Петербурге, телефон, режим работы и онлайн-запись на консультацию ортодонта.";
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="container-narrow contacts">
+		<Breadcrumbs items={[{ label: "Главная", href: "/" }, { label: "Контакты" }]} />
+
+		<h1>Контакты</h1>
+		<p class="lead">Запишитесь на бесплатную консультацию ортодонта или задайте вопрос.</p>
+
+		<div class="cards">
+			<section class="card">
+				<h2>Связаться с нами</h2>
+				<dl>
+					<dt>Телефон</dt>
+					<dd><a href="tel:+78126038300">+7 (812) 603-83-00</a></dd>
+					<dt>Город</dt>
+					<dd>Санкт-Петербург</dd>
+					<dt>Действующий сайт-визитка</dt>
+					<dd><a href="https://gretaorto.ru" rel="noopener">gretaorto.ru</a></dd>
+				</dl>
+			</section>
+
+			<section class="card">
+				<h2>Запись на консультацию</h2>
+				<p>
+					На приёме врач-ортодонт проведёт диагностику, ответит на ваши вопросы и предложит план лечения.
+					Консультация бесплатная.
+				</p>
+				<p>
+					<a class="btn" href="tel:+78126038300">Позвонить</a>
+					<a class="btn btn-outline" href="https://gretaorto.ru" rel="noopener">Записаться онлайн</a>
+				</p>
+			</section>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	.contacts {
+		padding: 32px 0 56px;
+	}
+
+	.lead {
+		font-size: 17px;
+		color: var(--muted);
+		margin-bottom: 24px;
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 16px;
+	}
+
+	dl {
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		gap: 8px 18px;
+		margin: 0;
+	}
+
+	dt {
+		color: var(--muted);
+		font-size: 14px;
+	}
+
+	dd {
+		margin: 0;
+		font-weight: 600;
+	}
+
+	.btn + .btn {
+		margin-left: 8px;
+	}
+</style>

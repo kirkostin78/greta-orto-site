@@ -1,52 +1,70 @@
-# greta-orto-site
+# Greta Orto Site
 
-Сайт клиники ортодонтии **Грета Орто** (Санкт-Петербург).
+Многостраничный сайт центра прозрачной ортодонтии «Грета Орто» (Санкт-Петербург).
 
-- **Стек:** Astro + MDX + Cloudflare Pages
-- **Staging (dev) домен:** `greta-orto.ru`
-- **Production домен (после запуска):** `gretaorto.ru`
-- **Статус:** в активной разработке (неделя 1 из 12)
+Цель: ТОП-1 в Яндекс СПб по ключевой семантике (`элайнеры спб` и связанные).
 
-Полный план, семантика, дизайн-система и контент-стратегия хранятся в рабочем воркспейсе `Грета_Орто/04_Интернет-маркетинг/Мастер_Сайт/`.
+## Стек
 
----
+- **Astro 6** + **MDX** + **Astro Sitemap**
+- **TypeScript** для конфигурации и content collections
+- Хостинг: **Cloudflare Pages** (auto-deploy на push в `main`)
+- Домен: `greta-orto.ru`
+- Текущий статус: разработка, весь сайт под `noindex,nofollow`
 
-## Разработка
+## Архитектура
 
-Требуется Node.js **≥ 22.12.0** (см. `.nvmrc`).
+### Pillar-cluster модель
 
-```sh
-npm install
-npm run dev      # локальный сервер http://localhost:4321
-npm run build    # production-билд в ./dist
-npm run preview  # предпросмотр production-билда
+10 опорных pillar-страниц + ~38 кластерных + ~12 брендовых = ~60 страниц на старте.
+
+Карта сайта v1: см. `Грета_Орто/04_Интернет-маркетинг/Мастер_Сайт/02_Архитектура_Сайта/Карта_сайта_v1.md` в основном репозитории клиники.
+
+### Структура папок
+
+```
+src/
+  components/        — переиспользуемые UI: SiteHeader, SiteFooter, CTA, FAQ, Breadcrumbs
+  layouts/           — BaseLayout, PillarLayout, ClusterLayout, BrandLayout
+  pages/             — pillar-страницы как .astro (index.astro в каждой папке)
+  content/
+    cluster/         — Tier-2 кластерные страницы как .mdx (планируется)
+    brand/           — Tier-3 брендовые страницы как .mdx (планируется)
+  content.config.ts  — schema для content collections
+public/
+  _redirects         — Cloudflare Pages редиректы со старых URL
+  robots.txt         — закрыто от индексации (этап разработки)
 ```
 
----
+### URL-конвенция
 
-## Структура
+Slug'и URL — транслит русских слов (`/elajnery/`, `/brekety/`, `/prikus/distalnyj/`).
+Все URL заканчиваются слешем (`trailingSlash: "always"` в `astro.config.mjs`).
 
-```text
-greta-orto-site/
-├─ public/            # статика (favicon, изображения, robots.txt)
-├─ src/
-│  ├─ content/        # MDX-контент (статьи, страницы услуг) — появится со 2-й недели
-│  ├─ components/     # Astro-компоненты — появятся с 4-й недели
-│  ├─ layouts/        # шаблоны страниц — появятся с 4-й недели
-│  └─ pages/          # маршруты сайта
-├─ astro.config.mjs
-├─ package.json
-└─ tsconfig.json
+## Команды
+
+```bash
+npm install     # установить зависимости
+npm run dev     # запустить локальный dev-сервер
+npm run build   # production-сборка в ./dist
+npm run preview # запуск превью production-сборки
 ```
-
----
 
 ## Деплой
 
-Любой `git push` в ветку `main` → автоматический билд и деплой через Cloudflare Pages (настраивается в четверг недели 1).
+Любой push в `main` запускает Cloudflare Pages билд и публикацию.
 
----
+Конфигурация Cloudflare Pages:
+- Framework: **Astro**
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Environment variable: `NODE_VERSION=22`
 
-## Лицензия
+## Что будет в следующих итерациях
 
-Proprietary. Все права защищены.
+1. Контент Tier-1 pillar-страниц (полные лонгриды по ТЗ)
+2. Tier-2 кластерные страницы через content collections (MDX)
+3. Tier-3 брендовые страницы (MDX)
+4. Снятие `noindex` после первой волны индексабельного контента
+5. Виджет онлайн-записи (Dental Pro / альтернатива)
+6. Калькулятор стоимости лечения
