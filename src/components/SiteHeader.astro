@@ -4,13 +4,14 @@ const navItems = [
 	{ href: "/brekety/", label: "Брекеты" },
 	{ href: "/prikus/", label: "Прикус" },
 	{ href: "/detskaya-ortodontiya/", label: "Детям" },
-	{ href: "/gnatologiya/", label: "Гнатология" },
+	{ href: "/viniry/", label: "Виниры" },
+	{ href: "/implantatsiya/", label: "Имплантация" },
 	{ href: "/klinika/", label: "Клиника" },
 	{ href: "/kontakty/", label: "Контакты" },
 ];
 
-const phone = "+7 (812) 603-83-00";
-const phoneTel = "+78126038300";
+const phone = "+7 (812) 501-12-15";
+const phoneTel = "+78125011215";
 
 const currentPath = new URL(Astro.request.url).pathname;
 ---
@@ -54,7 +55,7 @@ const currentPath = new URL(Astro.request.url).pathname;
 		<div class="header-cta">
 			<a class="phone" href={`tel:${phoneTel}`} aria-label={`Позвонить ${phone}`}>
 				<span class="phone-num">{phone}</span>
-				<span class="phone-hint">Бесплатная консультация</span>
+				<span class="phone-hint">Пн–Вс, 9:00–21:00</span>
 			</a>
 			<a class="btn-cta" href="/kontakty/">Записаться</a>
 		</div>

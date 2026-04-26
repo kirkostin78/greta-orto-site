@@ -1,24 +1,28 @@
 ---
 const year = new Date().getFullYear();
 
-const phone = "+7 (812) 603-83-00";
-const phoneTel = "+78126038300";
+const phone1 = "+7 (812) 501-12-15";
+const phone1Tel = "+78125011215";
+const phone2 = "+7 (994) 416-85-68";
+const phone2Tel = "+79944168568";
 
 const footerColumns = [
 	{
-		title: "Лечение",
+		title: "Ортодонтия",
 		items: [
 			{ href: "/elajnery/", label: "Элайнеры" },
 			{ href: "/brekety/", label: "Брекеты" },
 			{ href: "/prikus/", label: "Прикус" },
 			{ href: "/retentsiya/", label: "Ретенция" },
+			{ href: "/detskaya-ortodontiya/", label: "Детская ортодонтия" },
+			{ href: "/gnatologiya/", label: "Гнатология / ВНЧС" },
 		],
 	},
 	{
-		title: "Пациентам",
+		title: "Также делаем",
 		items: [
-			{ href: "/detskaya-ortodontiya/", label: "Детская ортодонтия" },
-			{ href: "/gnatologiya/", label: "Гнатология / ВНЧС" },
+			{ href: "/viniry/", label: "Виниры" },
+			{ href: "/implantatsiya/", label: "Имплантация" },
 			{ href: "/ortodont/", label: "Наши врачи" },
 		],
 	},
@@ -52,13 +56,25 @@ const footerColumns = [
 					</span>
 				</a>
 				<p class="footer-about">
-					Клиника ортодонтии в Санкт-Петербурге. Элайнеры, брекет-системы, гнатология и детская ортодонтия.
-					Цифровой план и фиксированная стоимость до старта лечения.
+					Центр прозрачной ортодонтии в Санкт-Петербурге. Главный фокус — лечение на элайнерах.
+					Также делаем брекеты, виниры и имплантацию для комплексных решений.
 				</p>
-				<a class="footer-phone" href={`tel:${phoneTel}`}>
-					<span class="footer-phone-num">{phone}</span>
-					<span class="footer-phone-hint">Бесплатная консультация · ежедневно</span>
-				</a>
+
+				<div class="footer-contacts">
+					<a class="footer-phone" href={`tel:${phone1Tel}`}>
+						<span class="footer-phone-num">{phone1}</span>
+						<span class="footer-phone-hint">Городской</span>
+					</a>
+					<a class="footer-phone" href={`tel:${phone2Tel}`}>
+						<span class="footer-phone-num">{phone2}</span>
+						<span class="footer-phone-hint">Мобильный · WhatsApp</span>
+					</a>
+				</div>
+
+				<div class="footer-address">
+					<div class="footer-address-line">Санкт-Петербург, ул. Марата, 68, лит. А, пом. 9-н</div>
+					<div class="footer-address-line muted">Пн–Вс, 9:00–21:00 · без выходных</div>
+				</div>
 			</div>
 
 			<div class="footer-cols">
@@ -80,10 +96,13 @@ const footerColumns = [
 		</div>
 
 		<div class="bottom">
-			<div>© Грета Орто, {year}. Центр прозрачной ортодонтии в Санкт-Петербурге.</div>
-			<div class="meta">
-				Информация на сайте не является публичной офертой и медицинской консультацией.
-				Лицензия и реквизиты — на странице <a href="/klinika/">«Клиника»</a>.
+			<div class="bottom-legal">
+				<div>© Грета Орто, {year}. Центр прозрачной ортодонтии в Санкт-Петербурге.</div>
+				<div class="meta">
+					ООО «НТВ» · ИНН 7805819155 · ОГРН 1247800108148. Информация на сайте не является публичной
+					офертой и медицинской консультацией. Реквизиты и лицензия — на странице
+					<a href="/klinika/">«Клиника»</a>.
+				</div>
 			</div>
 		</div>
 	</div>
@@ -156,6 +175,12 @@ const footerColumns = [
 		margin: 0 0 22px;
 	}
 
+	.footer-contacts {
+		display: grid;
+		gap: 12px;
+		margin-bottom: 18px;
+	}
+
 	.footer-phone {
 		display: flex;
 		flex-direction: column;
@@ -166,18 +191,30 @@ const footerColumns = [
 	.footer-phone-num {
 		font-family: "Nunito", sans-serif;
 		font-weight: 800;
-		font-size: 22px;
+		font-size: 19px;
 		color: #fff;
 	}
 
 	.footer-phone-hint {
-		margin-top: 4px;
-		font-size: 12.5px;
+		margin-top: 2px;
+		font-size: 12px;
 		color: rgba(255, 253, 250, 0.5);
 	}
 
 	.footer-phone:hover .footer-phone-num {
 		color: var(--gold-soft);
+	}
+
+	.footer-address {
+		font-size: 13.5px;
+		line-height: 1.55;
+		color: rgba(255, 253, 250, 0.78);
+	}
+
+	.footer-address-line.muted {
+		color: rgba(255, 253, 250, 0.5);
+		font-size: 12.5px;
+		margin-top: 2px;
 	}
 
 	.footer-cols {
@@ -216,16 +253,17 @@ const footerColumns = [
 
 	.bottom {
 		padding-top: 22px;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		gap: 12px 32px;
+	}
+
+	.bottom-legal {
+		display: grid;
+		gap: 8px;
 		font-size: 12.5px;
 		color: rgba(255, 253, 250, 0.45);
 	}
 
 	.bottom .meta {
-		max-width: 60ch;
+		max-width: 80ch;
 	}
 
 	.bottom a {

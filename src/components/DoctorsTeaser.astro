@@ -1,18 +1,32 @@
 ---
 const doctors = [
 	{
-		name: "Дарья Сергеевна Костина",
-		role: "Врач-ортодонт, к.м.н.",
+		name: "Костина Дария Сергеевна",
+		role: "Главный врач, ортодонт",
 		specialties: ["Элайнеры", "Брекет-системы", "Детская ортодонтия"],
-		experience: "12+ лет практики",
-		education: "СПбГУ · обучение Invisalign · постдипломные программы по гнатологии",
+		experience: "22 года в стоматологии · 11 лет в ортодонтии",
+		education: "Ведёт сложные ортодонтические кейсы взрослых и детей. Лицо клиники по элайнерам.",
 	},
 	{
-		name: "Команда клиники",
-		role: "Гигиенист · ассистенты · координатор лечения",
-		specialties: ["Профессиональная гигиена", "Сопровождение лечения", "Online-связь"],
-		experience: "С пациентом на каждом этапе",
-		education: "Поддержка между визитами в мессенджере, напоминания о смене кап и явках",
+		name: "Костин Кирилл Александрович",
+		role: "Главный врач клиники, стоматолог-ортопед",
+		specialties: ["Виниры", "Коронки", "Протезирование"],
+		experience: "Ведёт ортопедическое направление",
+		education: "Эстетическая ортопедия после ортодонтии: керамические виниры, коронки, реставрации.",
+	},
+	{
+		name: "Борисова Анастасия Сергеевна",
+		role: "Врач-ортодонт, гигиенист",
+		specialties: ["Ортодонтия", "Гигиена"],
+		experience: "Ведёт ортодонтических пациентов",
+		education: "Сопровождение лечения, профессиональная гигиена.",
+	},
+	{
+		name: "Давыдова Юлия Радиевна",
+		role: "Врач-ортодонт, гигиенист",
+		specialties: ["Ортодонтия", "Гигиена"],
+		experience: "Ведёт ортодонтических пациентов",
+		education: "Сопровождение лечения, профессиональная гигиена.",
 	},
 ];
 ---
@@ -22,7 +36,11 @@ const doctors = [
 		<div class="section-eyebrow">
 			<span class="kicker">Врачи и команда</span>
 			<h2>Кто ведёт ваше лечение</h2>
-			<p>Один врач — один пациент с первой консультации до снятия ретейнера. Без передачи между специалистами.</p>
+			<p>
+				Один врач ведёт пациента от первой консультации до снятия ретейнера — без передачи между
+				специалистами. Команда — главный ортодонт клиники, главврач-ортопед и два сопровождающих
+				врача-ортодонта.
+			</p>
 		</div>
 
 		<div class="doctors-grid">
@@ -30,7 +48,7 @@ const doctors = [
 				doctors.map((d) => (
 					<article class="doctor-card">
 						<div class="doctor-photo" aria-hidden="true">
-							<span>{d.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}</span>
+							<span>{d.name.split(" ").slice(0, 2).map((p) => p[0]).join("")}</span>
 						</div>
 						<div class="doctor-body">
 							<h3>{d.name}</h3>
@@ -46,7 +64,7 @@ const doctors = [
 									<dd>{d.experience}</dd>
 								</div>
 								<div>
-									<dt>Образование</dt>
+									<dt>Подход</dt>
 									<dd>{d.education}</dd>
 								</div>
 							</dl>
@@ -57,7 +75,7 @@ const doctors = [
 		</div>
 
 		<p class="doctors-cta">
-			<a href="/ortodont/" class="btn btn-ghost">Подробно о враче и подходе →</a>
+			<a href="/ortodont/" class="btn btn-ghost">Подробно о врачах и подходе →</a>
 		</p>
 	</div>
 </section>
@@ -95,14 +113,15 @@ const doctors = [
 
 	.doctor-card h3 {
 		margin: 0 0 4px;
-		font-size: 19px;
+		font-size: 18px;
 		color: var(--ink);
+		line-height: 1.3;
 	}
 
 	.doctor-role {
 		margin: 0 0 12px;
 		color: var(--gold-dark);
-		font-size: 14px;
+		font-size: 13.5px;
 		font-weight: 600;
 	}
 
@@ -133,7 +152,7 @@ const doctors = [
 
 	.doctor-meta div {
 		display: grid;
-		grid-template-columns: 100px 1fr;
+		grid-template-columns: 80px 1fr;
 		gap: 8px;
 	}
 

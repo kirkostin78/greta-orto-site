@@ -1,28 +1,29 @@
 ---
-const services = [
+const focusServices = [
 	{
 		href: "/elajnery/",
 		title: "Элайнеры",
-		text: "Прозрачные капы. Незаметно для окружающих, можно снимать на еду и чистку зубов.",
-		hint: "От 1 года · Подходит большинству",
+		text: "Прозрачные капы. Незаметно для окружающих, можно снимать на еду и чистку зубов. Главный продукт клиники — лечим самые сложные случаи.",
+		hint: "Главный фокус · Лидер по СПб",
+		featured: true,
 	},
 	{
 		href: "/brekety/",
 		title: "Брекет-системы",
-		text: "Самолигирующие, керамические, лингвальные и металлические — выбор по клинической задаче.",
+		text: "Самолигирующие, керамические, металлические — выбор по клинической задаче, когда элайнеры уступают по эффективности.",
 		hint: "От 1.5 лет · Сложные случаи",
 	},
 	{
 		href: "/prikus/",
 		title: "Исправление прикуса",
-		text: "Дистальный, мезиальный, глубокий, перекрёстный, открытый — диагностика и план.",
+		text: "Дистальный, мезиальный, глубокий, перекрёстный, открытый — диагностика, план и решение.",
 		hint: "Любой возраст",
 	},
 	{
 		href: "/detskaya-ortodontiya/",
 		title: "Детская ортодонтия",
-		text: "Пластинки, трейнеры, элайнеры и брекеты для детей и подростков. Профилактика и коррекция.",
-		hint: "От 4 лет",
+		text: "Пластинки, трейнеры, элайнеры и брекеты для детей и подростков. Принимаем с 8 лет.",
+		hint: "От 8 лет",
 	},
 	{
 		href: "/gnatologiya/",
@@ -37,23 +38,39 @@ const services = [
 		hint: "Завершающий этап",
 	},
 ];
+
+const additionalServices = [
+	{
+		href: "/viniry/",
+		title: "Виниры",
+		text: "Эстетическая ортопедия после ортодонтического лечения. Керамические виниры, накладки, реставрации.",
+		hint: "Дополнительная экспертиза",
+	},
+	{
+		href: "/implantatsiya/",
+		title: "Имплантация",
+		text: "Восстановление отсутствующих зубов. Подготовка с ортодонтом — там, где это даёт лучший результат.",
+		hint: "Дополнительная экспертиза",
+	},
+];
 ---
 
 <section class="services section">
 	<div class="container">
 		<div class="section-eyebrow">
-			<span class="kicker">Что мы лечим</span>
-			<h2>Полный цикл ортодонтии — от первого визита до ретенции</h2>
+			<span class="kicker">Что мы делаем</span>
+			<h2>Главный фокус — ортодонтия. Глубокая экспертиза в виниринге и имплантации.</h2>
 			<p>
-				В клинике мы занимаемся только ортодонтией и смежными темами. Без распыления — поэтому глубокая
-				экспертиза в каждом направлении.
+				Лечение на элайнерах — наш профильный продукт, в нём мы сильнее всех в Санкт-Петербурге.
+				Дополнительно ведём виниры и имплантацию — для пациентов, которым нужен комплексный
+				результат после ортодонтии.
 			</p>
 		</div>
 
 		<div class="services-grid">
 			{
-				services.map((s) => (
-					<a class="service-card" href={s.href}>
+				focusServices.map((s) => (
+					<a class:list={["service-card", { featured: s.featured }]} href={s.href}>
 						<div class="service-card-top">
 							<h3>{s.title}</h3>
 							<span class="service-arrow" aria-hidden="true">
@@ -65,6 +82,26 @@ const services = [
 					</a>
 				))
 			}
+		</div>
+
+		<div class="services-additional">
+			<div class="services-additional-label">Также делаем</div>
+			<div class="services-grid">
+				{
+					additionalServices.map((s) => (
+						<a class="service-card additional" href={s.href}>
+							<div class="service-card-top">
+								<h3>{s.title}</h3>
+								<span class="service-arrow" aria-hidden="true">
+									→
+								</span>
+							</div>
+							<p>{s.text}</p>
+							<span class="service-hint">{s.hint}</span>
+						</a>
+					))
+				}
+			</div>
 		</div>
 	</div>
 </section>
@@ -89,8 +126,19 @@ const services = [
 		transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 	}
 
+	.service-card.featured {
+		background: linear-gradient(135deg, var(--cream) 0%, var(--surface) 100%);
+		border-color: var(--gold-soft);
+	}
+
+	.service-card.additional {
+		background: var(--surface-soft);
+		border-style: dashed;
+	}
+
 	.service-card:hover {
 		border-color: var(--gold-soft);
+		border-style: solid;
 		transform: translateY(-3px);
 		box-shadow: var(--shadow-md);
 		color: var(--text);
@@ -135,5 +183,26 @@ const services = [
 		letter-spacing: 0.3px;
 		text-transform: uppercase;
 		font-weight: 600;
+	}
+
+	.service-card.featured .service-hint {
+		color: var(--gold-dark);
+	}
+
+	.services-additional {
+		margin-top: 40px;
+	}
+
+	.services-additional-label {
+		font-size: 13px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1.2px;
+		color: var(--muted);
+		margin-bottom: 14px;
+	}
+
+	.services-additional .services-grid {
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 	}
 </style>

@@ -2,8 +2,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 
-const title = "Контакты — Грета Орто, Санкт-Петербург";
-const description = "Адрес клиники Грета Орто в Санкт-Петербурге, телефон, режим работы и онлайн-запись на консультацию ортодонта.";
+const title = "Контакты — Грета Орто, Санкт-Петербург, ул. Марата 68";
+const description =
+	"Адрес клиники Грета Орто: Санкт-Петербург, ул. Марата 68. Телефоны +7 (812) 501-12-15, +7 (994) 416-85-68. Режим работы Пн–Вс, 9:00–21:00 без выходных.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -11,33 +12,65 @@ const description = "Адрес клиники Грета Орто в Санкт
 		<Breadcrumbs items={[{ label: "Главная", href: "/" }, { label: "Контакты" }]} />
 
 		<h1>Контакты</h1>
-		<p class="lead">Запишитесь на бесплатную консультацию ортодонта или задайте вопрос.</p>
+		<p class="lead">
+			Запишитесь на первичную консультацию ортодонта (1 час, 1 900 ₽) или задайте вопрос — городской и
+			мобильный телефоны клиники, мобильный с WhatsApp.
+		</p>
 
 		<div class="cards">
 			<section class="card">
-				<h2>Связаться с нами</h2>
+				<h2>Связаться с клиникой</h2>
 				<dl>
-					<dt>Телефон</dt>
-					<dd><a href="tel:+78126038300">+7 (812) 603-83-00</a></dd>
-					<dt>Город</dt>
-					<dd>Санкт-Петербург</dd>
-					<dt>Действующий сайт-визитка</dt>
-					<dd><a href="https://gretaorto.ru" rel="noopener">gretaorto.ru</a></dd>
+					<dt>Городской телефон</dt>
+					<dd><a href="tel:+78125011215">+7 (812) 501-12-15</a></dd>
+					<dt>Мобильный · WhatsApp</dt>
+					<dd><a href="tel:+79944168568">+7 (994) 416-85-68</a></dd>
+					<dt>Email</dt>
+					<dd><a href="mailto:gretaorto@yandex.ru">gretaorto@yandex.ru</a></dd>
+					<dt>Адрес</dt>
+					<dd>191119, Санкт-Петербург, ул. Марата, 68, лит. А, пом. 9-н</dd>
+					<dt>Режим работы</dt>
+					<dd>Пн–Вс, 9:00–21:00 · без выходных</dd>
+					<dt>ВКонтакте</dt>
+					<dd><a href="https://vk.com/gretaorto" rel="noopener" target="_blank">vk.com/gretaorto</a></dd>
 				</dl>
 			</section>
 
 			<section class="card">
 				<h2>Запись на консультацию</h2>
 				<p>
-					На приёме врач-ортодонт проведёт диагностику, ответит на ваши вопросы и предложит план лечения.
-					Консультация бесплатная.
+					Первичный приём ортодонта длится 1 час, стоимость 1 900 ₽. Врач проводит осмотр, делает
+					фото-протокол, обсуждает с вами задачи и предлагает варианты лечения. Решение о следующих
+					шагах вы принимаете спокойно, без давления.
 				</p>
-				<p>
-					<a class="btn" href="tel:+78126038300">Позвонить</a>
-					<a class="btn btn-outline" href="https://gretaorto.ru" rel="noopener">Записаться онлайн</a>
+				<p class="contact-actions">
+					<a class="btn" href="tel:+78125011215">Позвонить</a>
+					<a class="btn btn-outline" href="https://wa.me/79944168568" rel="noopener">Написать в WhatsApp</a>
+				</p>
+				<p class="muted-note">
+					Пациентам из других городов лечение на элайнерах удобно — визиты раз в 3–6 месяцев можно
+					планировать заранее.
 				</p>
 			</section>
 		</div>
+
+		<section class="card requisites">
+			<h2>Реквизиты</h2>
+			<dl>
+				<dt>Юр.лицо</dt>
+				<dd>ООО «НТВ»</dd>
+				<dt>ИНН</dt>
+				<dd>7805819155</dd>
+				<dt>КПП</dt>
+				<dd>784001001</dd>
+				<dt>ОГРН</dt>
+				<dd>1247800108148</dd>
+				<dt>Юр.адрес</dt>
+				<dd>191119, г. Санкт-Петербург, ул. Марата, д. 68, лит. А, пом. 9-н</dd>
+				<dt>Ген.директор</dt>
+				<dd>Костин Кирилл Александрович</dd>
+			</dl>
+		</section>
 	</div>
 </BaseLayout>
 
@@ -75,7 +108,20 @@ const description = "Адрес клиники Грета Орто в Санкт
 		font-weight: 600;
 	}
 
-	.btn + .btn {
-		margin-left: 8px;
+	.contact-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.muted-note {
+		font-size: 13.5px;
+		color: var(--muted);
+		font-style: italic;
+		margin-top: 12px;
+	}
+
+	.requisites {
+		margin-top: 16px;
 	}
 </style>

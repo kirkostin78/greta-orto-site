@@ -19,16 +19,47 @@ const orgJsonLd = {
 	"@context": "https://schema.org",
 	"@type": ["Dentist", "MedicalBusiness", "LocalBusiness"],
 	name: "Грета Орто",
-	alternateName: "Greta Orto",
+	alternateName: ["Greta Orto", "Центр Прозрачной Ортодонтии", "ЦПО"],
 	url: Astro.site?.toString(),
 	logo: new URL("/greta-orto-logo-trim.png", Astro.site).toString(),
+	image: new URL("/greta-orto-logo-trim.png", Astro.site).toString(),
 	description:
-		"Центр прозрачной ортодонтии в Санкт-Петербурге. Элайнеры, брекет-системы, исправление прикуса.",
+		"Центр прозрачной ортодонтии в Санкт-Петербурге. Главный фокус — лечение на элайнерах. Также делаем брекет-системы, виниры и имплантацию.",
+	telephone: ["+78125011215", "+79944168568"],
+	email: "gretaorto@yandex.ru",
+	address: {
+		"@type": "PostalAddress",
+		streetAddress: "ул. Марата, д. 68, лит. А, пом. 9-н",
+		addressLocality: "Санкт-Петербург",
+		postalCode: "191119",
+		addressCountry: "RU",
+	},
 	areaServed: {
 		"@type": "City",
 		name: "Санкт-Петербург",
 	},
-	medicalSpecialty: ["Orthodontic", "Dentistry"],
+	medicalSpecialty: ["Orthodontic", "Dentistry", "Prosthodontics"],
+	openingHoursSpecification: [
+		{
+			"@type": "OpeningHoursSpecification",
+			dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			opens: "09:00",
+			closes: "21:00",
+		},
+	],
+	founder: {
+		"@type": "Person",
+		name: "Костин Кирилл Александрович",
+	},
+	legalName: "ООО «НТВ»",
+	taxID: "7805819155",
+	vatID: "7805819155",
+	identifier: [
+		{ "@type": "PropertyValue", propertyID: "INN", value: "7805819155" },
+		{ "@type": "PropertyValue", propertyID: "OGRN", value: "1247800108148" },
+		{ "@type": "PropertyValue", propertyID: "KPP", value: "784001001" },
+	],
+	sameAs: ["https://gretaorto.ru", "https://vk.com/gretaorto"],
 };
 ---
 
