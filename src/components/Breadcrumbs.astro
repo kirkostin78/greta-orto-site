@@ -46,12 +46,12 @@ const jsonLd = {
 	.breadcrumbs ol {
 		list-style: none;
 		padding: 0;
-		margin: 0 0 20px;
+		margin: 0 0 24px;
 		display: flex;
 		flex-wrap: wrap;
 		gap: 6px 8px;
 		font-size: 13px;
-		color: #777;
+		color: var(--muted);
 	}
 
 	.breadcrumbs li {
@@ -61,20 +61,21 @@ const jsonLd = {
 	}
 
 	.breadcrumbs a {
-		color: #777;
+		color: var(--muted);
 		text-decoration: none;
+		transition: color 0.15s;
 	}
 
 	.breadcrumbs a:hover {
-		color: var(--gold);
+		color: var(--gold-dark);
 	}
 
 	.breadcrumbs .sep {
-		color: #bbb;
+		color: var(--muted-soft);
 	}
 
 	.breadcrumbs span[aria-current="page"] {
-		color: var(--dark);
+		color: var(--ink);
 		font-weight: 600;
 	}
 </style>

@@ -8,9 +8,10 @@ interface Props {
 	heading?: string;
 	items: QA[];
 	emitSchema?: boolean;
+	hideHeading?: boolean;
 }
 
-const { heading = "Частые вопросы", items, emitSchema = true } = Astro.props as Props;
+const { heading = "Частые вопросы", items, emitSchema = true, hideHeading = false } = Astro.props as Props;
 
 const jsonLd = emitSchema
 	? {
@@ -29,12 +30,15 @@ const jsonLd = emitSchema
 ---
 
 <section class="faq">
-	<h2>{heading}</h2>
+	{!hideHeading && <h2>{heading}</h2>}
 	<dl>
 		{
 			items.map((it) => (
 				<details>
-					<summary>{it.q}</summary>
+					<summary>
+						<span>{it.q}</span>
+						<span class="faq-icon" aria-hidden="true" />
+					</summary>
 					<div class="answer" set:html={it.a} />
 				</details>
 			))
@@ -45,31 +49,30 @@ const jsonLd = emitSchema
 {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
 <style>
-	.faq {
-		margin: 40px 0;
-	}
-
 	.faq dl {
 		display: grid;
-		gap: 8px;
+		gap: 10px;
 		margin: 0;
 	}
 
 	details {
-		background: #fff;
-		border: 1px solid var(--grey);
-		border-radius: 10px;
-		padding: 0;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius-md);
+		transition: border-color 0.2s, box-shadow 0.2s;
 	}
 
 	details[open] {
-		border-color: var(--gold);
+		border-color: var(--gold-soft);
+		box-shadow: var(--shadow-md);
 	}
 
 	summary {
-		padding: 16px 20px;
-		font-weight: 600;
-		font-size: 16px;
+		padding: 18px 22px;
+		font-family: "Nunito", sans-serif;
+		font-weight: 700;
+		font-size: 17px;
+		color: var(--ink);
 		cursor: pointer;
 		list-style: none;
 		display: flex;
@@ -82,21 +85,45 @@ const jsonLd = emitSchema
 		display: none;
 	}
 
-	summary::after {
-		content: "+";
-		font-size: 22px;
-		color: var(--gold);
-		font-weight: 400;
-		transition: transform 0.15s;
+	.faq-icon {
+		flex: 0 0 22px;
+		width: 22px;
+		height: 22px;
+		position: relative;
 	}
 
-	details[open] summary::after {
-		content: "−";
+	.faq-icon::before,
+	.faq-icon::after {
+		content: "";
+		position: absolute;
+		background: var(--gold);
+		border-radius: 1px;
+		transition: transform 0.2s;
+	}
+
+	.faq-icon::before {
+		top: 50%;
+		left: 0;
+		right: 0;
+		height: 2px;
+		transform: translateY(-50%);
+	}
+
+	.faq-icon::after {
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		transform: translateX(-50%);
+	}
+
+	details[open] .faq-icon::after {
+		transform: translateX(-50%) scaleY(0);
 	}
 
 	.answer {
-		padding: 0 20px 18px;
-		color: #4a4a4a;
-		line-height: 1.6;
+		padding: 0 22px 20px;
+		color: var(--text);
+		line-height: 1.65;
 	}
 </style>

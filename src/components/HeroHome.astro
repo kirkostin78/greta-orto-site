@@ -1,0 +1,222 @@
+---
+const phone = "+7 (812) 603-83-00";
+const phoneTel = "+78126038300";
+---
+
+<section class="hero">
+	<div class="container">
+		<div class="hero-grid">
+			<div class="hero-copy">
+				<span class="kicker">Центр прозрачной ортодонтии · Санкт-Петербург</span>
+				<h1>
+					Лечение прикуса, <br />
+					которое можно увидеть <span class="accent">до начала</span>
+				</h1>
+				<p class="lead">
+					Элайнеры, брекет-системы, гнатология и детская ортодонтия. Перед стартом вы видите цифровой план,
+					этапы перемещения зубов и итоговый результат.
+				</p>
+
+				<ul class="hero-points" aria-label="Что вы получаете">
+					<li><span aria-hidden="true">·</span> Бесплатная первичная консультация</li>
+					<li><span aria-hidden="true">·</span> Фиксированная стоимость до старта лечения</li>
+					<li><span aria-hidden="true">·</span> Прогноз результата в 3D на консультации</li>
+				</ul>
+
+				<div class="hero-cta">
+					<a class="btn" href="/kontakty/">Записаться на консультацию</a>
+					<a class="btn btn-ghost" href="/elajnery/">Узнать про элайнеры</a>
+				</div>
+
+				<a class="hero-phone" href={`tel:${phoneTel}`}>
+					<span class="hero-phone-num">{phone}</span>
+					<span class="hero-phone-hint">или позвоните прямо сейчас</span>
+				</a>
+			</div>
+
+			<aside class="hero-side" aria-hidden="true">
+				<div class="hero-card">
+					<div class="hero-card-row">
+						<div class="hero-card-num">1</div>
+						<div>
+							<strong>Диагностика</strong>
+							<span>3D-сканирование, фото-протокол, КЛКТ</span>
+						</div>
+					</div>
+					<div class="hero-card-row">
+						<div class="hero-card-num">2</div>
+						<div>
+							<strong>Цифровой план</strong>
+							<span>Видите движение зубов до старта</span>
+						</div>
+					</div>
+					<div class="hero-card-row">
+						<div class="hero-card-num">3</div>
+						<div>
+							<strong>Лечение</strong>
+							<span>Понятные этапы, регулярный контроль</span>
+						</div>
+					</div>
+					<div class="hero-card-row">
+						<div class="hero-card-num">4</div>
+						<div>
+							<strong>Ретенция</strong>
+							<span>Удержание результата после активного лечения</span>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		padding: clamp(48px, 7vw, 96px) 0 clamp(56px, 8vw, 104px);
+		background:
+			radial-gradient(1100px 520px at 90% -10%, rgba(176, 138, 85, 0.12), transparent 60%),
+			radial-gradient(900px 600px at 0% 100%, rgba(247, 238, 224, 0.85), transparent 65%),
+			var(--surface);
+		overflow: hidden;
+	}
+
+	.hero::before {
+		content: "";
+		position: absolute;
+		inset: auto 0 0 0;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+		opacity: 0.7;
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+		gap: clamp(32px, 5vw, 64px);
+		align-items: center;
+	}
+
+	.hero-copy h1 {
+		margin-bottom: 18px;
+	}
+
+	.hero-copy h1 .accent {
+		color: var(--gold-dark);
+		font-style: italic;
+		font-weight: 700;
+	}
+
+	.hero-points {
+		list-style: none;
+		padding: 0;
+		margin: 28px 0 0;
+		display: grid;
+		gap: 8px;
+	}
+
+	.hero-points li {
+		font-size: 16px;
+		color: var(--text);
+		display: flex;
+		gap: 10px;
+		align-items: baseline;
+	}
+
+	.hero-points li span {
+		color: var(--gold);
+		font-weight: 800;
+	}
+
+	.hero-cta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+
+	.hero-phone {
+		display: inline-flex;
+		flex-direction: column;
+		margin-top: 24px;
+		text-decoration: none;
+		color: var(--ink);
+	}
+
+	.hero-phone-num {
+		font-family: "Nunito", sans-serif;
+		font-weight: 800;
+		font-size: 22px;
+		color: var(--ink);
+	}
+
+	.hero-phone-hint {
+		font-size: 13px;
+		color: var(--muted);
+		letter-spacing: 0.3px;
+	}
+
+	.hero-phone:hover .hero-phone-num {
+		color: var(--gold);
+	}
+
+	.hero-side {
+		position: relative;
+	}
+
+	.hero-card {
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius-lg);
+		padding: 28px;
+		display: grid;
+		gap: 18px;
+		box-shadow: var(--shadow-lg);
+	}
+
+	.hero-card-row {
+		display: grid;
+		grid-template-columns: 36px 1fr;
+		gap: 16px;
+		align-items: start;
+	}
+
+	.hero-card-num {
+		width: 36px;
+		height: 36px;
+		display: grid;
+		place-items: center;
+		border-radius: 50%;
+		background: var(--cream);
+		color: var(--gold-dark);
+		font-family: "Nunito", sans-serif;
+		font-weight: 800;
+		font-size: 16px;
+	}
+
+	.hero-card-row strong {
+		display: block;
+		font-family: "Nunito", sans-serif;
+		font-size: 16px;
+		color: var(--ink);
+		margin-bottom: 2px;
+	}
+
+	.hero-card-row span {
+		display: block;
+		font-size: 13.5px;
+		color: var(--muted);
+		line-height: 1.55;
+	}
+
+	@media (max-width: 880px) {
+		.hero-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-side {
+			order: -1;
+			max-width: 480px;
+		}
+	}
+</style>

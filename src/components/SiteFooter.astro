@@ -1,6 +1,9 @@
 ---
 const year = new Date().getFullYear();
 
+const phone = "+7 (812) 603-83-00";
+const phoneTel = "+78126038300";
+
 const footerColumns = [
 	{
 		title: "Лечение",
@@ -23,7 +26,7 @@ const footerColumns = [
 		title: "Клиника",
 		items: [
 			{ href: "/klinika/", label: "О клинике" },
-			{ href: "/o-nas/", label: "О бренде Greta Orto" },
+			{ href: "/o-nas/", label: "О бренде" },
 			{ href: "/kontakty/", label: "Контакты" },
 		],
 	},
@@ -32,56 +35,165 @@ const footerColumns = [
 
 <footer class="site-footer">
 	<div class="container">
-		<div class="cols">
-			{
-				footerColumns.map((col) => (
-					<div class="col">
-						<h4>{col.title}</h4>
-						<ul>
-							{col.items.map((it) => (
-								<li>
-									<a href={it.href}>{it.label}</a>
-								</li>
-							))}
-						</ul>
-					</div>
-				))
-			}
+		<div class="footer-top">
+			<div class="footer-brand">
+				<a class="brand" href="/" aria-label="Грета Орто — на главную">
+					<img
+						src="/greta-orto-mark-header.png"
+						srcset="/greta-orto-mark-header.png 1x, /greta-orto-mark-header@2x.png 2x"
+						alt=""
+						width="92"
+						height="48"
+						class="brand-mark"
+					/>
+					<span class="brand-text">
+						<span class="brand-name">Грета Орто</span>
+						<span class="brand-tagline">центр прозрачной ортодонтии</span>
+					</span>
+				</a>
+				<p class="footer-about">
+					Клиника ортодонтии в Санкт-Петербурге. Элайнеры, брекет-системы, гнатология и детская ортодонтия.
+					Цифровой план и фиксированная стоимость до старта лечения.
+				</p>
+				<a class="footer-phone" href={`tel:${phoneTel}`}>
+					<span class="footer-phone-num">{phone}</span>
+					<span class="footer-phone-hint">Бесплатная консультация · ежедневно</span>
+				</a>
+			</div>
+
+			<div class="footer-cols">
+				{
+					footerColumns.map((col) => (
+						<div class="col">
+							<h4>{col.title}</h4>
+							<ul>
+								{col.items.map((it) => (
+									<li>
+										<a href={it.href}>{it.label}</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</div>
 		</div>
+
 		<div class="bottom">
-			<span>© Грета Орто, {year}. Центр прозрачной ортодонтии в Санкт-Петербурге.</span>
-			<span class="meta">Не является публичной офертой. Лицензия Л041-01148-78/00586921 (демо).</span>
+			<div>© Грета Орто, {year}. Центр прозрачной ортодонтии в Санкт-Петербурге.</div>
+			<div class="meta">
+				Информация на сайте не является публичной офертой и медицинской консультацией.
+				Лицензия и реквизиты — на странице <a href="/klinika/">«Клиника»</a>.
+			</div>
 		</div>
 	</div>
 </footer>
 
 <style>
 	.site-footer {
-		margin-top: 80px;
-		padding: 40px 0 28px;
-		background: #1f1f1f;
-		color: #cfcfcf;
+		margin-top: var(--space-section);
+		padding: 56px 0 28px;
+		background: var(--ink);
+		color: rgba(255, 253, 250, 0.72);
 		font-size: 14px;
 	}
 
 	.container {
-		max-width: 1100px;
+		max-width: 1180px;
 		margin: 0 auto;
 		padding: 0 24px;
 	}
 
-	.cols {
+	.footer-top {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 28px;
-		margin-bottom: 28px;
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+		gap: 48px;
+		padding-bottom: 36px;
+		border-bottom: 1px solid rgba(255, 253, 250, 0.08);
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 12px;
+		text-decoration: none;
+		margin-bottom: 18px;
+	}
+
+	.brand-mark {
+		width: auto;
+		height: 44px;
+		filter: brightness(1.1);
+	}
+
+	.brand-text {
+		display: flex;
+		flex-direction: column;
+		line-height: 1;
+	}
+
+	.brand-name {
+		font-family: "Nunito", system-ui, sans-serif;
+		font-weight: 800;
+		font-size: 20px;
+		color: var(--gold-soft);
+		letter-spacing: -0.3px;
+	}
+
+	.brand-tagline {
+		margin-top: 4px;
+		font-size: 10.5px;
+		color: rgba(255, 253, 250, 0.5);
+		letter-spacing: 0.8px;
+		text-transform: uppercase;
+	}
+
+	.footer-about {
+		max-width: 36ch;
+		font-size: 14px;
+		line-height: 1.6;
+		color: rgba(255, 253, 250, 0.65);
+		margin: 0 0 22px;
+	}
+
+	.footer-phone {
+		display: flex;
+		flex-direction: column;
+		text-decoration: none;
+		color: rgba(255, 253, 250, 0.85);
+	}
+
+	.footer-phone-num {
+		font-family: "Nunito", sans-serif;
+		font-weight: 800;
+		font-size: 22px;
+		color: #fff;
+	}
+
+	.footer-phone-hint {
+		margin-top: 4px;
+		font-size: 12.5px;
+		color: rgba(255, 253, 250, 0.5);
+	}
+
+	.footer-phone:hover .footer-phone-num {
+		color: var(--gold-soft);
+	}
+
+	.footer-cols {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		gap: 32px;
 	}
 
 	h4 {
-		margin: 0 0 12px;
-		font-family: "Nunito", system-ui, sans-serif;
+		margin: 0 0 14px;
+		font-family: "Nunito", sans-serif;
 		color: #fff;
-		font-size: 15px;
+		font-size: 14px;
+		letter-spacing: 0.4px;
+		text-transform: uppercase;
+		font-weight: 700;
 	}
 
 	ul {
@@ -89,26 +201,42 @@ const footerColumns = [
 		padding: 0;
 		margin: 0;
 		display: grid;
-		gap: 6px;
+		gap: 8px;
 	}
 
-	a {
-		color: #cfcfcf;
+	.footer-cols a {
+		color: rgba(255, 253, 250, 0.72);
 		text-decoration: none;
+		transition: color 0.15s;
 	}
 
-	a:hover {
-		color: var(--gold);
+	.footer-cols a:hover {
+		color: var(--gold-soft);
 	}
 
 	.bottom {
-		border-top: 1px solid #333;
-		padding-top: 18px;
+		padding-top: 22px;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		gap: 12px;
-		font-size: 12px;
-		color: #8f8f8f;
+		gap: 12px 32px;
+		font-size: 12.5px;
+		color: rgba(255, 253, 250, 0.45);
+	}
+
+	.bottom .meta {
+		max-width: 60ch;
+	}
+
+	.bottom a {
+		color: rgba(255, 253, 250, 0.65);
+		text-decoration: underline;
+	}
+
+	@media (max-width: 880px) {
+		.footer-top {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
 	}
 </style>

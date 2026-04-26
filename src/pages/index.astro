@@ -1,216 +1,42 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroHome from "../components/HeroHome.astro";
+import ServicesGrid from "../components/ServicesGrid.astro";
+import BrandPrinciples from "../components/BrandPrinciples.astro";
+import NumbersBlock from "../components/NumbersBlock.astro";
+import DoctorsTeaser from "../components/DoctorsTeaser.astro";
+import HomeFAQ from "../components/HomeFAQ.astro";
 import CTA from "../components/CTA.astro";
 
 const title = "Грета Орто — центр прозрачной ортодонтии в Санкт-Петербурге";
 const description =
-	"Элайнеры, брекет-системы, лечение прикуса, гнатология и детская ортодонтия в Санкт-Петербурге. Прозрачный план лечения и предсказуемый результат.";
-
-const services = [
-	{
-		href: "/elajnery/",
-		title: "Элайнеры",
-		text: "Прозрачные капы для незаметного выравнивания зубов. План лечения от первого визита до ретенции.",
-	},
-	{
-		href: "/brekety/",
-		title: "Брекет-системы",
-		text: "Самолигирующие, керамические, лингвальные и металлические брекеты. Расчёт стоимости и сроков на консультации.",
-	},
-	{
-		href: "/prikus/",
-		title: "Прикус",
-		text: "Дистальный, мезиальный, глубокий, перекрёстный, открытый. Диагностика и план исправления.",
-	},
-	{
-		href: "/gnatologiya/",
-		title: "Гнатология / ВНЧС",
-		text: "Дисфункция височно-нижнечелюстного сустава, шум при жевании, ограничение открывания рта.",
-	},
-	{
-		href: "/detskaya-ortodontiya/",
-		title: "Детская ортодонтия",
-		text: "Пластинки, трейнеры, элайнеры и брекеты для детей и подростков.",
-	},
-	{
-		href: "/retentsiya/",
-		title: "Ретенция",
-		text: "Удержание результата после активного лечения: ретейнеры, ретенционные капы, контроль.",
-	},
-];
+	"Лечение прикуса в Санкт-Петербурге: элайнеры, брекет-системы, гнатология и детская ортодонтия. Цифровой план до старта, фиксированная стоимость, бесплатная консультация.";
 ---
 
 <BaseLayout title={title} description={description}>
-	<section class="hero">
+	<HeroHome />
+	<ServicesGrid />
+	<BrandPrinciples />
+	<NumbersBlock />
+	<DoctorsTeaser />
+	<HomeFAQ />
+
+	<section class="final-cta-section">
 		<div class="container">
-			<div class="hero-grid">
-				<div>
-					<p class="kicker">Центр прозрачной ортодонтии · Санкт-Петербург</p>
-					<h1>Лечение прикуса, которое можно увидеть до начала</h1>
-					<p class="lead">
-						Грета Орто — клиника прозрачной ортодонтии. Перед стартом лечения вы видите цифровой план,
-						этапы перемещения зубов и итоговый результат.
-					</p>
-					<div class="hero-cta">
-						<a class="btn" href="/kontakty/">Записаться на консультацию</a>
-						<a class="btn btn-outline" href="/elajnery/">Об элайнерах подробно</a>
-					</div>
-				</div>
-			</div>
+			<CTA
+				variant="wide"
+				heading="Не уверены, что нужно вам — элайнеры или брекеты?"
+				text="Это нормально. Мы для того и существуем, чтобы разобраться вместе. На бесплатной консультации врач делает 3D-сканирование и показывает оба варианта плана — выбираете вы."
+				button="Записаться"
+				secondaryButton="Позвонить +7 (812) 603-83-00"
+				secondaryHref="tel:+78126038300"
+			/>
 		</div>
 	</section>
-
-	<section class="services">
-		<div class="container">
-			<h2>Что мы лечим</h2>
-			<div class="grid">
-				{
-					services.map((s) => (
-						<a class="service-card" href={s.href}>
-							<h3>{s.title}</h3>
-							<p>{s.text}</p>
-							<span class="more">Подробнее →</span>
-						</a>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<section class="why">
-		<div class="container">
-			<h2>Почему «прозрачная» ортодонтия</h2>
-			<div class="why-grid">
-				<div class="why-card">
-					<h3>Цифровая диагностика</h3>
-					<p>3D-сканирование, фото-протокол, КЛКТ при необходимости. Все данные сохраняются и доступны вам.</p>
-				</div>
-				<div class="why-card">
-					<h3>План лечения до старта</h3>
-					<p>Вы видите движение зубов на каждом этапе ещё до того, как наденете первую капу или брекет.</p>
-				</div>
-				<div class="why-card">
-					<h3>Прозрачная стоимость</h3>
-					<p>Полный расчёт лечения на старте — без сюрпризов «по ходу». Возможна оплата в рассрочку.</p>
-				</div>
-				<div class="why-card">
-					<h3>Контроль каждого этапа</h3>
-					<p>Регулярные приёмы, фото-сравнение прогресса, корректировка плана при необходимости.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<div class="container">
-		<CTA />
-	</div>
 </BaseLayout>
 
 <style>
-	.hero {
-		padding: 56px 0 40px;
-		background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
-		border-bottom: 1px solid #e7d6b4;
-	}
-
-	.hero-grid {
-		max-width: 760px;
-	}
-
-	.kicker {
-		font-size: 13px;
-		text-transform: uppercase;
-		letter-spacing: 0.6px;
-		color: var(--gold-dark);
-		font-weight: 700;
-		margin: 0 0 12px;
-	}
-
-	.lead {
-		font-size: clamp(17px, 2vw, 20px);
-		color: #5b4f3a;
-		max-width: 640px;
-	}
-
-	.hero-cta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 12px;
-		margin-top: 24px;
-	}
-
-	.services,
-	.why {
-		padding: 48px 0;
-	}
-
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-		gap: 16px;
-	}
-
-	.service-card {
-		display: block;
-		background: #fff;
-		border: 1px solid var(--grey);
-		border-radius: 12px;
-		padding: 24px;
-		text-decoration: none;
-		color: var(--text);
-		transition: border-color 0.15s, transform 0.15s;
-	}
-
-	.service-card:hover {
-		border-color: var(--gold);
-		transform: translateY(-2px);
-		text-decoration: none;
-	}
-
-	.service-card h3 {
-		margin: 0 0 8px;
-		color: var(--dark);
-	}
-
-	.service-card p {
-		font-size: 14px;
-		color: var(--muted);
-		margin: 0 0 12px;
-		line-height: 1.5;
-	}
-
-	.service-card .more {
-		font-size: 13px;
-		color: var(--gold);
-		font-weight: 700;
-	}
-
-	.why {
-		background: var(--grey-soft);
-	}
-
-	.why-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-		gap: 16px;
-	}
-
-	.why-card {
-		background: #fff;
-		padding: 22px;
-		border-radius: 10px;
-		border: 1px solid var(--grey);
-	}
-
-	.why-card h3 {
-		margin: 0 0 8px;
-		font-size: 18px;
-	}
-
-	.why-card p {
-		margin: 0;
-		font-size: 14px;
-		line-height: 1.55;
-		color: var(--muted);
+	.final-cta-section {
+		padding: 0 0 var(--space-section);
 	}
 </style>

@@ -1,0 +1,83 @@
+---
+const principles = [
+	{
+		num: "01",
+		title: "Видите план до старта",
+		text: "Перед стартом лечения мы делаем 3D-сканирование и показываем, как будут двигаться зубы по неделям. Решение — за вами, а не за врачом.",
+	},
+	{
+		num: "02",
+		title: "Фиксированная стоимость",
+		text: "Полный расчёт лечения вы получаете на консультации. Никаких «доплат по ходу» — даже если потребуется дополнительная капа.",
+	},
+	{
+		num: "03",
+		title: "Реалистичные сроки",
+		text: "Не обещаем «ровные зубы за 3 месяца». Говорим честно: какие задачи решит лечение, какие — нет, и за какое время.",
+	},
+	{
+		num: "04",
+		title: "Только ортодонтия",
+		text: "Мы не лечим кариес и не делаем имплантацию. Если нужны смежные процедуры — направляем к проверенным специалистам по нашему чек-листу.",
+	},
+];
+---
+
+<section class="principles section section-warm">
+	<div class="container">
+		<div class="section-eyebrow">
+			<span class="kicker">Прозрачная ортодонтия</span>
+			<h2>Что значит «прозрачная»</h2>
+			<p>Это не маркетинг — это четыре правила, которые мы соблюдаем с каждым пациентом.</p>
+		</div>
+
+		<div class="principles-grid">
+			{
+				principles.map((p) => (
+					<article class="principle">
+						<div class="principle-num">{p.num}</div>
+						<h3>{p.title}</h3>
+						<p>{p.text}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.principles-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 20px;
+	}
+
+	.principle {
+		padding: 28px 26px;
+		background: var(--surface);
+		border-radius: var(--radius-md);
+		border: 1px solid transparent;
+	}
+
+	.principle-num {
+		font-family: "Nunito", sans-serif;
+		font-weight: 800;
+		font-size: 14px;
+		letter-spacing: 1px;
+		color: var(--gold);
+		margin-bottom: 12px;
+	}
+
+	.principle h3 {
+		font-size: 19px;
+		color: var(--ink);
+		margin: 0 0 10px;
+	}
+
+	.principle p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 15px;
+		line-height: 1.6;
+	}
+</style>

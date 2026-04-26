@@ -82,46 +82,79 @@ const procedureJsonLd = procedureSchema
 
 <style>
 	.pillar {
-		padding: 32px 0 64px;
+		padding: 40px 0 var(--space-section);
 	}
 
 	.pillar-header {
-		margin-bottom: 36px;
-		padding-bottom: 28px;
-		border-bottom: 1px solid var(--grey);
+		margin-bottom: 40px;
+		padding-bottom: 32px;
+		border-bottom: 1px solid var(--line);
 	}
 
 	.lead {
-		font-size: clamp(17px, 2vw, 20px);
-		color: var(--text);
-		line-height: 1.55;
+		font-size: clamp(17px, 2vw, 21px);
+		color: var(--muted);
+		line-height: 1.6;
 		margin: 16px 0 18px;
+		max-width: 60ch;
 	}
 
 	.meta {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 6px 18px;
-		font-size: 13px;
+		gap: 6px 24px;
+		font-size: 13.5px;
 		color: var(--muted);
-		margin-top: 8px;
+		margin-top: 12px;
+	}
+
+	.meta strong {
+		color: var(--ink);
 	}
 
 	.pillar-body :global(h2) {
-		margin-top: 48px;
+		margin-top: 56px;
+		margin-bottom: 18px;
+	}
+
+	.pillar-body :global(h3) {
+		margin-top: 32px;
+		margin-bottom: 12px;
 	}
 
 	.pillar-body :global(figure) {
-		margin: 28px 0;
+		margin: 32px 0;
 	}
 
 	.pillar-body :global(blockquote) {
-		border-left: 4px solid var(--gold);
-		padding: 12px 18px;
+		border-left: 3px solid var(--gold);
+		padding: 16px 22px;
 		background: var(--cream);
-		border-radius: 0 8px 8px 0;
-		margin: 22px 0;
-		color: #5b4f3a;
+		border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+		margin: 26px 0;
+		color: var(--ink);
 		font-style: italic;
+		font-size: 17px;
+	}
+
+	.pillar-body :global(table) {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 24px 0;
+		font-size: 14.5px;
+	}
+
+	.pillar-body :global(th),
+	.pillar-body :global(td) {
+		padding: 12px 14px;
+		border-bottom: 1px solid var(--line);
+		text-align: left;
+		vertical-align: top;
+	}
+
+	.pillar-body :global(th) {
+		background: var(--surface-warm);
+		color: var(--ink);
+		font-weight: 700;
 	}
 </style>
