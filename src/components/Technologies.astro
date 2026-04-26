@@ -1,0 +1,113 @@
+---
+import MediaPlaceholder from "./MediaPlaceholder.astro";
+
+const techs = [
+	{
+		title: "КЛКТ обеих челюстей",
+		text: "Свой аппарат компьютерной томографии в клинике. Не отправляем пациентов делать снимки в сторонние центры — делаем здесь и сразу.",
+		mediaLabel: "КЛКТ-аппарат",
+		mediaHint: "Общий план аппарата в кабинете",
+	},
+	{
+		title: "3D-сканер",
+		text: "Цифровые оттиски без слепочной массы. Сканирование занимает 10–15 минут, данные сразу идут в орточек-план лечения.",
+		mediaLabel: "3D-сканер",
+		mediaHint: "Сканер в работе крупным планом",
+	},
+	{
+		title: "Орточек (Digital Setup)",
+		text: "Цифровое моделирование лечения. Видите финальный результат и каждый этап до старта — не на словах, а в 3D на экране.",
+		mediaLabel: "Орточек",
+		mediaHint: "Экран с 3D-моделью зубов",
+	},
+	{
+		title: "Микроскоп",
+		text: "Для эндодонтии и сложных терапевтических работ. Точность реставраций на порядок выше, чем без микроскопа.",
+		mediaLabel: "Микроскоп",
+		mediaHint: "Микроскоп в кабинете",
+	},
+];
+---
+
+<section class="tech section">
+	<div class="container">
+		<div class="section-eyebrow">
+			<span class="kicker">Технологии и оборудование</span>
+			<h2>Всё для диагностики и лечения — на месте</h2>
+			<p>
+				Это не маркетинг. Когда у клиники свой КЛКТ и 3D-сканер, пациент получает диагностику в один
+				день, а врач — точные данные для планирования лечения.
+			</p>
+		</div>
+
+		<div class="tech-grid">
+			{
+				techs.map((t) => (
+					<article class="tech-card">
+						<div class="tech-media">
+							<MediaPlaceholder
+								label={t.mediaLabel}
+								hint={t.mediaHint}
+								aspect="landscape"
+								rounded="md"
+								tone="soft"
+							/>
+						</div>
+						<h3>{t.title}</h3>
+						<p>{t.text}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.tech-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px 32px;
+	}
+
+	.tech-card {
+		display: grid;
+		grid-template-columns: 200px 1fr;
+		gap: 20px;
+		align-items: start;
+	}
+
+	.tech-media {
+		width: 200px;
+	}
+
+	.tech-card h3 {
+		margin: 4px 0 8px;
+		font-size: 18px;
+		color: var(--ink);
+	}
+
+	.tech-card p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 14.5px;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 880px) {
+		.tech-grid {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+	}
+
+	@media (max-width: 540px) {
+		.tech-card {
+			grid-template-columns: 1fr;
+		}
+
+		.tech-media {
+			width: 100%;
+			max-width: 360px;
+		}
+	}
+</style>

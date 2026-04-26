@@ -1,0 +1,168 @@
+---
+const problems = [
+	{
+		title: "Хочу красивую улыбку, но без брекетов",
+		text: "Прозрачные элайнеры — незаметны, можно снимать на еду и фото. Лечим самые сложные случаи, в которых элайнеры по силе не уступают брекетам.",
+		cta: "Про элайнеры",
+		href: "/elajnery/",
+	},
+	{
+		title: "У меня сложный прикус, который надо исправить",
+		text: "Дистальный, мезиальный, глубокий, перекрёстный или открытый прикус — диагностика, 3D-план, лечение элайнерами или брекетами по выбору.",
+		cta: "Про прикус",
+		href: "/prikus/",
+	},
+	{
+		title: "Скрипю зубами, болит ВНЧС, головные боли",
+		text: "Дисфункция височно-нижнечелюстного сустава, бруксизм, боли в шее. Диагностика и сплинт-терапия, при необходимости — комплексное ортодонтическое лечение.",
+		cta: "Про гнатологию",
+		href: "/gnatologiya/",
+	},
+	{
+		title: "Ребёнку 8+ нужен ортодонт",
+		text: "Принимаем детей с 8 лет: пластинки, трейнеры, элайнеры для подростков, брекеты. Спокойный приём, без давления.",
+		cta: "Детская ортодонтия",
+		href: "/detskaya-ortodontiya/",
+	},
+	{
+		title: "После ортодонтии хочу довести улыбку до идеала",
+		text: "Виниры на ровные зубы держатся дольше и выглядят естественнее. Главврач-ортопед клиники ведёт эстетическую ортопедию у нас же.",
+		cta: "Про виниры",
+		href: "/viniry/",
+	},
+	{
+		title: "Нет зуба или нескольких — нужны импланты",
+		text: "Имплантация с подготовкой ортодонта: иногда нужно «раскрыть» место под имплант. Свой КЛКТ, хирургический кабинет, лицензия на хирургию.",
+		cta: "Про имплантацию",
+		href: "/implantatsiya/",
+	},
+];
+---
+
+<section class="problems section">
+	<div class="container">
+		<div class="section-eyebrow">
+			<span class="kicker">С чем приходят</span>
+			<h2>Что вас беспокоит?</h2>
+			<p>
+				Выберите свою ситуацию — расскажем, как мы её решаем, какой врач её ведёт и сколько примерно
+				времени занимает лечение.
+			</p>
+		</div>
+
+		<div class="problems-grid">
+			{
+				problems.map((p) => (
+					<a class="problem-card" href={p.href}>
+						<div class="problem-q">
+							<span class="problem-q-mark" aria-hidden="true">
+								?
+							</span>
+							<span>{p.title}</span>
+						</div>
+						<p class="problem-a">{p.text}</p>
+						<span class="problem-cta">
+							{p.cta}
+							<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+								<path
+									d="M5 12H19M19 12L13 6M19 12L13 18"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</span>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.problems-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 16px;
+	}
+
+	.problem-card {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		padding: 26px 24px;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		color: var(--text);
+		transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+	}
+
+	.problem-card:hover {
+		border-color: var(--gold-soft);
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-md);
+		color: var(--text);
+	}
+
+	.problem-q {
+		display: grid;
+		grid-template-columns: 32px 1fr;
+		gap: 12px;
+		align-items: start;
+	}
+
+	.problem-q-mark {
+		display: inline-grid;
+		place-items: center;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background: var(--cream);
+		color: var(--gold-dark);
+		font-family: "Nunito", sans-serif;
+		font-weight: 800;
+		font-size: 18px;
+		line-height: 1;
+	}
+
+	.problem-q span:last-child {
+		font-family: "Nunito", sans-serif;
+		font-weight: 800;
+		font-size: 17px;
+		color: var(--ink);
+		line-height: 1.3;
+		padding-top: 4px;
+	}
+
+	.problem-a {
+		margin: 0;
+		color: var(--muted);
+		font-size: 14.5px;
+		line-height: 1.55;
+	}
+
+	.problem-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		margin-top: auto;
+		padding-top: 8px;
+		font-size: 13.5px;
+		font-weight: 700;
+		color: var(--gold-dark);
+		letter-spacing: 0.2px;
+	}
+
+	.problem-cta svg {
+		width: 16px;
+		height: 16px;
+		transition: transform 0.2s;
+	}
+
+	.problem-card:hover .problem-cta svg {
+		transform: translateX(4px);
+	}
+</style>

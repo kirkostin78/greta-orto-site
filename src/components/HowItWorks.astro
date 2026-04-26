@@ -1,0 +1,142 @@
+---
+import MediaPlaceholder from "./MediaPlaceholder.astro";
+
+const steps = [
+	{
+		num: "1",
+		title: "Консультация",
+		duration: "1 час · 1 900 ₽",
+		text: "Осмотр, фото-протокол, обсуждение задач. Врач предварительно оценивает варианты лечения и отвечает на ваши вопросы.",
+		mediaLabel: "Шаг 1 — консультация",
+		mediaHint: "Дария Сергеевна с пациентом за столом",
+	},
+	{
+		num: "2",
+		title: "Диагностика",
+		duration: "2-й визит · 70 350 ₽",
+		text: "3D-сканирование зубов, КЛКТ обеих челюстей, ТРГ — всё на месте, без направлений. Готовим орточек на основе данных.",
+		mediaLabel: "Шаг 2 — 3D-сканирование",
+		mediaHint: "Сканер в работе или КЛКТ-аппарат",
+	},
+	{
+		num: "3",
+		title: "Орточек и план",
+		duration: "Через 7–10 дней",
+		text: "Цифровой план лечения: 3D-мультик, в котором вы видите финальный результат и каждый этап. Фиксируем стоимость на весь курс.",
+		mediaLabel: "Шаг 3 — орточек",
+		mediaHint: "Экран с 3D-моделью зубов, врач показывает",
+	},
+	{
+		num: "4",
+		title: "Лечение и ретенция",
+		duration: "9–24 мес.",
+		text: "Активная фаза с контрольными визитами раз в 3–6 мес. После — ретенционная фаза для удержания результата.",
+		mediaLabel: "Шаг 4 — лечение",
+		mediaHint: "Пациент с элайнером в руке",
+	},
+];
+---
+
+<section class="how section section-soft">
+	<div class="container">
+		<div class="section-eyebrow">
+			<span class="kicker">Как мы работаем</span>
+			<h2>Четыре шага от консультации до результата</h2>
+			<p>
+				Каждый этап понятен, по срокам и по стоимости. Вы принимаете решение начинать лечение
+				только после того, как увидели свой 3D-план и узнали полную цену курса.
+			</p>
+		</div>
+
+		<div class="how-grid">
+			{
+				steps.map((s) => (
+					<article class="step-card">
+						<div class="step-media">
+							<MediaPlaceholder
+								label={s.mediaLabel}
+								hint={s.mediaHint}
+								aspect="square"
+								rounded="md"
+								tone="cream"
+							/>
+							<div class="step-num">{s.num}</div>
+						</div>
+						<div class="step-body">
+							<h3>{s.title}</h3>
+							<div class="step-duration">{s.duration}</div>
+							<p>{s.text}</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.how-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 22px;
+	}
+
+	.step-card {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.step-media {
+		position: relative;
+	}
+
+	.step-num {
+		position: absolute;
+		top: 14px;
+		left: 14px;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background: var(--ink);
+		color: var(--surface);
+		display: grid;
+		place-items: center;
+		font-family: "Nunito", sans-serif;
+		font-weight: 800;
+		font-size: 15px;
+	}
+
+	.step-body h3 {
+		margin: 0 0 4px;
+		font-size: 19px;
+		color: var(--ink);
+	}
+
+	.step-duration {
+		font-size: 13px;
+		font-weight: 700;
+		color: var(--gold-dark);
+		letter-spacing: 0.3px;
+		margin-bottom: 8px;
+	}
+
+	.step-body p {
+		margin: 0;
+		font-size: 14.5px;
+		color: var(--muted);
+		line-height: 1.55;
+	}
+
+	@media (max-width: 980px) {
+		.how-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 540px) {
+		.how-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

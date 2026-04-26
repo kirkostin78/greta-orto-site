@@ -1,0 +1,211 @@
+---
+import MediaPlaceholder from "./MediaPlaceholder.astro";
+
+const cases = [
+	{
+		age: "Пациентка, 28 лет",
+		diagnosis: "Скученность зубов, дистальный прикус",
+		treatment: "Элайнеры",
+		duration: "14 месяцев",
+		doctor: "Костина Д. С.",
+	},
+	{
+		age: "Пациент, 34 года",
+		diagnosis: "Промежутки между зубами (тремы)",
+		treatment: "Элайнеры",
+		duration: "9 месяцев",
+		doctor: "Костина Д. С.",
+	},
+	{
+		age: "Подросток, 15 лет",
+		diagnosis: "Глубокий прикус, скученность",
+		treatment: "Элайнеры (подростковая программа)",
+		duration: "18 месяцев",
+		doctor: "Костина Д. С.",
+	},
+	{
+		age: "Пациентка, 42 года",
+		diagnosis: "Перекрёстный прикус, рецессия",
+		treatment: "Элайнеры + ретейнеры",
+		duration: "20 месяцев",
+		doctor: "Костина Д. С.",
+	},
+];
+---
+
+<section class="cases section">
+	<div class="container">
+		<div class="section-eyebrow">
+			<span class="kicker">Кейсы лечения</span>
+			<h2>Как было — и как стало</h2>
+			<p>
+				Реальные пациенты клиники, согласившиеся показать результат. Каждый кейс — лично проведён
+				главным ортодонтом клиники.
+			</p>
+		</div>
+
+		<div class="cases-grid">
+			{
+				cases.map((c) => (
+					<article class="case-card">
+						<div class="case-images">
+							<div class="case-image">
+								<MediaPlaceholder
+									label="ДО"
+									hint="Фото до лечения"
+									aspect="square"
+									rounded="sm"
+									tone="cream"
+								/>
+								<span class="case-tag case-tag-before">ДО</span>
+							</div>
+							<div class="case-image">
+								<MediaPlaceholder
+									label="ПОСЛЕ"
+									hint="Фото после лечения"
+									aspect="square"
+									rounded="sm"
+									tone="cream"
+								/>
+								<span class="case-tag case-tag-after">ПОСЛЕ</span>
+							</div>
+						</div>
+						<div class="case-body">
+							<div class="case-age">{c.age}</div>
+							<div class="case-diagnosis">{c.diagnosis}</div>
+							<dl class="case-meta">
+								<div>
+									<dt>Лечение</dt>
+									<dd>{c.treatment}</dd>
+								</div>
+								<div>
+									<dt>Срок</dt>
+									<dd>{c.duration}</dd>
+								</div>
+								<div>
+									<dt>Врач</dt>
+									<dd>{c.doctor}</dd>
+								</div>
+							</dl>
+						</div>
+					</article>
+				))
+			}
+		</div>
+
+		<p class="cases-cta">
+			<a href="/elajnery/" class="btn btn-ghost">Посмотреть все кейсы лечения элайнерами →</a>
+		</p>
+	</div>
+</section>
+
+<style>
+	.cases-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+
+	.case-card {
+		padding: 22px;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius-md);
+	}
+
+	.case-images {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 8px;
+		margin-bottom: 16px;
+	}
+
+	.case-image {
+		position: relative;
+	}
+
+	.case-tag {
+		position: absolute;
+		top: 8px;
+		left: 8px;
+		padding: 3px 9px;
+		border-radius: var(--radius-pill);
+		font-size: 10.5px;
+		font-weight: 800;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+
+	.case-tag-before {
+		background: var(--ink);
+		color: var(--surface);
+	}
+
+	.case-tag-after {
+		background: var(--gold);
+		color: #fff;
+	}
+
+	.case-age {
+		font-family: "Nunito", sans-serif;
+		font-weight: 800;
+		font-size: 16px;
+		color: var(--ink);
+		margin-bottom: 4px;
+	}
+
+	.case-diagnosis {
+		font-size: 14px;
+		color: var(--gold-dark);
+		font-weight: 600;
+		margin-bottom: 12px;
+	}
+
+	.case-meta {
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 4px 12px;
+		padding-top: 12px;
+		border-top: 1px solid var(--line);
+	}
+
+	.case-meta div {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.case-meta dt {
+		font-size: 11px;
+		color: var(--muted-soft);
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-weight: 700;
+	}
+
+	.case-meta dd {
+		margin: 0;
+		font-size: 13px;
+		color: var(--text);
+		font-weight: 600;
+		line-height: 1.35;
+	}
+
+	.cases-cta {
+		text-align: center;
+		margin-top: 32px;
+	}
+
+	@media (max-width: 880px) {
+		.cases-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.case-meta {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

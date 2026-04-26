@@ -1,11 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroHome from "../components/HeroHome.astro";
+import TrustBar from "../components/TrustBar.astro";
+import ProblemSegmentation from "../components/ProblemSegmentation.astro";
 import ServicesGrid from "../components/ServicesGrid.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import BeforeAfterCases from "../components/BeforeAfterCases.astro";
 import BrandPrinciples from "../components/BrandPrinciples.astro";
 import NumbersBlock from "../components/NumbersBlock.astro";
+import Technologies from "../components/Technologies.astro";
 import DoctorsTeaser from "../components/DoctorsTeaser.astro";
+import Reviews from "../components/Reviews.astro";
+import ClinicGallery from "../components/ClinicGallery.astro";
 import HomeFAQ from "../components/HomeFAQ.astro";
+import ContactsMap from "../components/ContactsMap.astro";
 import CTA from "../components/CTA.astro";
 
 const title = "Грета Орто — центр прозрачной ортодонтии в Санкт-Петербурге";
@@ -15,18 +23,26 @@ const description =
 
 <BaseLayout title={title} description={description}>
 	<HeroHome />
+	<TrustBar />
+	<ProblemSegmentation />
 	<ServicesGrid />
+	<HowItWorks />
+	<BeforeAfterCases />
 	<BrandPrinciples />
 	<NumbersBlock />
+	<Technologies />
 	<DoctorsTeaser />
+	<Reviews />
+	<ClinicGallery />
 	<HomeFAQ />
+	<ContactsMap />
 
 	<section class="final-cta-section">
 		<div class="container">
 			<CTA
 				variant="wide"
 				heading="Не уверены, что нужно вам — элайнеры или брекеты?"
-				text="Это нормально. На первичной консультации врач делает фото-протокол, обсуждает с вами задачи и предварительно оценивает варианты. На втором визите — диагностика и 3D-план лечения (орточек). Решение принимаете вы, спокойно и осознанно."
+				text="Это нормально. На первичной консультации (1 900 ₽) врач делает фото-протокол, обсуждает с вами задачи и предварительно оценивает варианты. На втором визите — диагностика и 3D-план лечения (орточек). Решение принимаете вы, спокойно и осознанно."
 				button="Записаться"
 				secondaryButton="Позвонить +7 (812) 501-12-15"
 				secondaryHref="tel:+78125011215"

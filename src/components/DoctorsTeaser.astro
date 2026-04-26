@@ -1,37 +1,46 @@
 ---
+import MediaPlaceholder from "./MediaPlaceholder.astro";
+
 const doctors = [
 	{
 		name: "Костина Дария Сергеевна",
 		role: "Главный врач, ортодонт",
 		specialties: ["Элайнеры", "Брекет-системы", "Детская ортодонтия"],
 		experience: "22 года в стоматологии · 11 лет в ортодонтии",
-		education: "Ведёт сложные ортодонтические кейсы взрослых и детей. Лицо клиники по элайнерам.",
+		approach: "Ведёт сложные ортодонтические кейсы взрослых и детей. Лицо клиники по элайнерам.",
 	},
 	{
 		name: "Костин Кирилл Александрович",
 		role: "Главный врач клиники, стоматолог-ортопед",
 		specialties: ["Виниры", "Коронки", "Протезирование"],
 		experience: "Ведёт ортопедическое направление",
-		education: "Эстетическая ортопедия после ортодонтии: керамические виниры, коронки, реставрации.",
+		approach: "Эстетическая ортопедия после ортодонтии: керамические виниры, коронки, реставрации.",
 	},
 	{
 		name: "Борисова Анастасия Сергеевна",
 		role: "Врач-ортодонт, гигиенист",
 		specialties: ["Ортодонтия", "Гигиена"],
 		experience: "Ведёт ортодонтических пациентов",
-		education: "Сопровождение лечения, профессиональная гигиена.",
+		approach: "Сопровождение лечения, профессиональная гигиена.",
 	},
 	{
 		name: "Давыдова Юлия Радиевна",
 		role: "Врач-ортодонт, гигиенист",
 		specialties: ["Ортодонтия", "Гигиена"],
 		experience: "Ведёт ортодонтических пациентов",
-		education: "Сопровождение лечения, профессиональная гигиена.",
+		approach: "Сопровождение лечения, профессиональная гигиена.",
 	},
 ];
+
+const initialsOf = (name) =>
+	name
+		.split(" ")
+		.slice(0, 2)
+		.map((p) => p[0])
+		.join("");
 ---
 
-<section class="doctors section section-soft">
+<section class="doctors section section-warm">
 	<div class="container">
 		<div class="section-eyebrow">
 			<span class="kicker">Врачи и команда</span>
@@ -47,8 +56,14 @@ const doctors = [
 			{
 				doctors.map((d) => (
 					<article class="doctor-card">
-						<div class="doctor-photo" aria-hidden="true">
-							<span>{d.name.split(" ").slice(0, 2).map((p) => p[0]).join("")}</span>
+						<div class="doctor-photo">
+							<MediaPlaceholder
+								label={initialsOf(d.name)}
+								hint="Портрет врача"
+								aspect="square"
+								rounded="md"
+								tone="cream"
+							/>
 						</div>
 						<div class="doctor-body">
 							<h3>{d.name}</h3>
@@ -65,7 +80,7 @@ const doctors = [
 								</div>
 								<div>
 									<dt>Подход</dt>
-									<dd>{d.education}</dd>
+									<dd>{d.approach}</dd>
 								</div>
 							</dl>
 						</div>
@@ -83,32 +98,22 @@ const doctors = [
 <style>
 	.doctors-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 		gap: 20px;
 	}
 
 	.doctor-card {
 		display: grid;
-		grid-template-columns: 96px 1fr;
-		gap: 20px;
-		padding: 26px;
+		grid-template-columns: 140px 1fr;
+		gap: 22px;
+		padding: 24px;
 		background: var(--surface);
 		border: 1px solid var(--line);
 		border-radius: var(--radius-md);
 	}
 
 	.doctor-photo {
-		width: 96px;
-		height: 96px;
-		border-radius: 50%;
-		background: linear-gradient(135deg, var(--cream) 0%, var(--cream-deep) 100%);
-		display: grid;
-		place-items: center;
-		font-family: "Nunito", sans-serif;
-		font-weight: 800;
-		font-size: 28px;
-		color: var(--gold-dark);
-		letter-spacing: 1px;
+		width: 140px;
 	}
 
 	.doctor-card h3 {
@@ -152,19 +157,20 @@ const doctors = [
 
 	.doctor-meta div {
 		display: grid;
-		grid-template-columns: 80px 1fr;
+		grid-template-columns: 70px 1fr;
 		gap: 8px;
 	}
 
 	.doctor-meta dt {
 		color: var(--muted);
-		font-size: 13px;
+		font-size: 12.5px;
 	}
 
 	.doctor-meta dd {
 		margin: 0;
-		font-size: 13.5px;
+		font-size: 13px;
 		color: var(--text);
+		line-height: 1.5;
 	}
 
 	.doctors-cta {
@@ -172,10 +178,20 @@ const doctors = [
 		margin-top: 32px;
 	}
 
+	@media (max-width: 880px) {
+		.doctors-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
 	@media (max-width: 540px) {
 		.doctor-card {
 			grid-template-columns: 1fr;
-			text-align: left;
+		}
+
+		.doctor-photo {
+			width: 100%;
+			max-width: 200px;
 		}
 
 		.doctor-meta div {

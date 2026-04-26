@@ -1,0 +1,161 @@
+---
+const mapSrc =
+	"https://yandex.ru/map-widget/v1/?ll=30.349700%2C59.927200&mode=search&sctx=ZAAAAAgBEAAaKAoSCa%2BiCmOZWj1AEYQzM7MZWj1AEhIJj1JHoZvKGz4RNrf%2BNQHrOj4iBAABAgQoADABOJ7GxcrAtZ69%2FwFAyRZIAVU0fZw%2BWABiF21pZGRsZS1tYXBzLW1hdGNoZXItYmluZGVybQDAAQDIAQDqAQD9AfNqPj6CAhfRg9C7LiDQnNCw0YDQsNGC0LAsIDY4mAIAnQIAAAAAoAIAqAIAvQJp4Eg%2BwAIH4gIIyL%2FY8gPLypUF6gIA8gIA%2BAIAggMx0YPQuy4g0JzQsNGA0LDRgtCwLCA2OCwg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LOKAwCSAwIzNJoDFnNlYXJjaC1iaW5kZXItYmluZGVycG2dAwAAAACiBQE%2BqAUAtQUAAAAAvQUAAAAAxQUAAAAA0AUB&sll=30.349700%2C59.927200&sspn=0.013542%2C0.005069&z=17";
+---
+
+<section class="map-section section">
+	<div class="container">
+		<div class="section-eyebrow map-eyebrow">
+			<span class="kicker">Адрес и как нас найти</span>
+			<h2>Санкт-Петербург, ул. Марата, 68</h2>
+			<p>5 минут пешком от метро Маяковская и Владимирская. Работаем 7 дней в неделю с 9 до 21.</p>
+		</div>
+
+		<div class="map-grid">
+			<div class="map-info">
+				<dl class="map-info-list">
+					<div>
+						<dt>Адрес</dt>
+						<dd>191119, Санкт-Петербург,<br />ул. Марата, 68, лит. А, пом. 9-н</dd>
+					</div>
+					<div>
+						<dt>Метро</dt>
+						<dd>Маяковская · Владимирская<br />~ 5–7 минут пешком</dd>
+					</div>
+					<div>
+						<dt>Городской</dt>
+						<dd><a href="tel:+78125011215">+7 (812) 501-12-15</a></dd>
+					</div>
+					<div>
+						<dt>Мобильный · WhatsApp</dt>
+						<dd><a href="tel:+79944168568">+7 (994) 416-85-68</a></dd>
+					</div>
+					<div>
+						<dt>Email</dt>
+						<dd><a href="mailto:gretaorto@yandex.ru">gretaorto@yandex.ru</a></dd>
+					</div>
+					<div>
+						<dt>Режим</dt>
+						<dd>Пн–Вс, 9:00–21:00<br />без выходных</dd>
+					</div>
+				</dl>
+
+				<div class="map-actions">
+					<a class="btn" href="/kontakty/">Записаться на консультацию</a>
+					<a class="btn btn-ghost" href="https://yandex.ru/maps/?text=Санкт-Петербург,+ул.+Марата,+68" target="_blank" rel="noopener">
+						Открыть в Яндекс.Картах →
+					</a>
+				</div>
+			</div>
+
+			<div class="map-frame">
+				<iframe
+					src={mapSrc}
+					width="100%"
+					height="100%"
+					frameborder="0"
+					title="Карта: Грета Орто, ул. Марата, 68"
+					loading="lazy"
+				></iframe>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.map-eyebrow {
+		text-align: left;
+		margin-bottom: 32px;
+	}
+
+	.map-grid {
+		display: grid;
+		grid-template-columns: 380px 1fr;
+		gap: 28px;
+	}
+
+	.map-info-list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 18px 22px;
+		margin: 0 0 28px;
+	}
+
+	.map-info-list div {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.map-info-list dt {
+		font-size: 11.5px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.6px;
+		color: var(--muted-soft);
+	}
+
+	.map-info-list dd {
+		margin: 0;
+		font-size: 14.5px;
+		font-weight: 600;
+		color: var(--ink);
+		line-height: 1.5;
+	}
+
+	.map-info-list a {
+		color: var(--ink);
+		font-weight: 700;
+	}
+
+	.map-info-list a:hover {
+		color: var(--gold);
+	}
+
+	.map-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.map-frame {
+		min-height: 460px;
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		border: 1px solid var(--line);
+		background: var(--cream);
+	}
+
+	.map-frame iframe {
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: 460px;
+		border: 0;
+	}
+
+	@media (max-width: 880px) {
+		.map-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.map-info-list {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.map-frame {
+			min-height: 360px;
+			order: -1;
+		}
+
+		.map-frame iframe {
+			min-height: 360px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.map-info-list {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

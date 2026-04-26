@@ -4,37 +4,49 @@ const focusServices = [
 		href: "/elajnery/",
 		title: "Элайнеры",
 		text: "Прозрачные капы. Незаметно для окружающих, можно снимать на еду и чистку зубов. Главный продукт клиники — лечим самые сложные случаи.",
-		hint: "Главный фокус · Лидер по СПб",
+		duration: "9–24 мес.",
+		price: "Стоимость по диагностике",
+		hint: "Главный фокус",
 		featured: true,
 	},
 	{
 		href: "/brekety/",
 		title: "Брекет-системы",
 		text: "Самолигирующие, керамические, металлические — выбор по клинической задаче, когда элайнеры уступают по эффективности.",
-		hint: "От 1.5 лет · Сложные случаи",
+		duration: "12–30 мес.",
+		price: "Стоимость по диагностике",
+		hint: "Сложные случаи",
 	},
 	{
 		href: "/prikus/",
 		title: "Исправление прикуса",
-		text: "Дистальный, мезиальный, глубокий, перекрёстный, открытый — диагностика, план и решение.",
+		text: "Дистальный, мезиальный, глубокий, перекрёстный, открытый — диагностика, план и решение для любого возраста.",
+		duration: "Зависит от случая",
+		price: "Стоимость по диагностике",
 		hint: "Любой возраст",
 	},
 	{
 		href: "/detskaya-ortodontiya/",
 		title: "Детская ортодонтия",
 		text: "Пластинки, трейнеры, элайнеры и брекеты для детей и подростков. Принимаем с 8 лет.",
+		duration: "По возрасту",
+		price: "Стоимость по диагностике",
 		hint: "От 8 лет",
 	},
 	{
 		href: "/gnatologiya/",
 		title: "Гнатология / ВНЧС",
 		text: "Дисфункция височно-нижнечелюстного сустава, бруксизм, головные боли от прикуса.",
-		hint: "Диагностика и сплинт-терапия",
+		duration: "Курсами",
+		price: "Стоимость по диагностике",
+		hint: "Сплинт-терапия",
 	},
 	{
 		href: "/retentsiya/",
 		title: "Ретенция",
 		text: "Удержание результата после активного лечения: ретейнеры, ретенционные капы, контроль.",
+		duration: "Пожизненно",
+		price: "Включено в курс лечения",
 		hint: "Завершающий этап",
 	},
 ];
@@ -44,13 +56,17 @@ const additionalServices = [
 		href: "/viniry/",
 		title: "Виниры",
 		text: "Эстетическая ортопедия после ортодонтического лечения. Керамические виниры, накладки, реставрации.",
-		hint: "Дополнительная экспертиза",
+		duration: "2–4 визита",
+		price: "Стоимость по диагностике",
+		hint: "Эстетика после ортодонтии",
 	},
 	{
 		href: "/implantatsiya/",
 		title: "Имплантация",
 		text: "Восстановление отсутствующих зубов. Подготовка с ортодонтом — там, где это даёт лучший результат.",
-		hint: "Дополнительная экспертиза",
+		duration: "От 3 мес.",
+		price: "Стоимость по диагностике",
+		hint: "Свой КЛКТ и хирургия",
 	},
 ];
 ---
@@ -78,6 +94,16 @@ const additionalServices = [
 							</span>
 						</div>
 						<p>{s.text}</p>
+						<dl class="service-meta">
+							<div>
+								<dt>Срок</dt>
+								<dd>{s.duration}</dd>
+							</div>
+							<div>
+								<dt>Цена</dt>
+								<dd>{s.price}</dd>
+							</div>
+						</dl>
 						<span class="service-hint">{s.hint}</span>
 					</a>
 				))
@@ -97,12 +123,27 @@ const additionalServices = [
 								</span>
 							</div>
 							<p>{s.text}</p>
+							<dl class="service-meta">
+								<div>
+									<dt>Срок</dt>
+									<dd>{s.duration}</dd>
+								</div>
+								<div>
+									<dt>Цена</dt>
+									<dd>{s.price}</dd>
+								</div>
+							</dl>
 							<span class="service-hint">{s.hint}</span>
 						</a>
 					))
 				}
 			</div>
 		</div>
+
+		<p class="services-note">
+			Точный план и стоимость лечения вы получаете после ортодонтической диагностики (70 350 ₽).
+			Сумма за курс фиксируется и не меняется в процессе лечения.
+		</p>
 	</div>
 </section>
 
@@ -117,7 +158,7 @@ const additionalServices = [
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
-		padding: 28px 26px;
+		padding: 26px 24px;
 		background: var(--surface);
 		border: 1px solid var(--line);
 		border-radius: var(--radius-md);
@@ -170,19 +211,48 @@ const additionalServices = [
 	.service-card p {
 		margin: 0;
 		color: var(--muted);
-		font-size: 15px;
+		font-size: 14.5px;
 		line-height: 1.55;
+	}
+
+	.service-meta {
+		margin: 4px 0 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4px 12px;
+		padding: 12px 0 0;
+		border-top: 1px solid var(--line);
+	}
+
+	.service-meta div {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.service-meta dt {
+		font-size: 11.5px;
+		color: var(--muted-soft);
+		text-transform: uppercase;
+		letter-spacing: 0.6px;
+		font-weight: 700;
+	}
+
+	.service-meta dd {
+		margin: 0;
+		font-size: 13.5px;
+		color: var(--ink);
+		font-weight: 600;
 	}
 
 	.service-hint {
 		margin-top: auto;
-		padding-top: 12px;
-		border-top: 1px solid var(--line);
-		font-size: 12.5px;
+		padding-top: 10px;
+		font-size: 12px;
 		color: var(--muted-soft);
-		letter-spacing: 0.3px;
+		letter-spacing: 0.4px;
 		text-transform: uppercase;
-		font-weight: 600;
+		font-weight: 700;
 	}
 
 	.service-card.featured .service-hint {
@@ -190,7 +260,7 @@ const additionalServices = [
 	}
 
 	.services-additional {
-		margin-top: 40px;
+		margin-top: 36px;
 	}
 
 	.services-additional-label {
@@ -204,5 +274,14 @@ const additionalServices = [
 
 	.services-additional .services-grid {
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	}
+
+	.services-note {
+		margin: 32px auto 0;
+		max-width: 640px;
+		text-align: center;
+		font-size: 13.5px;
+		color: var(--muted);
+		font-style: italic;
 	}
 </style>

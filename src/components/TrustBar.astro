@@ -1,0 +1,117 @@
+---
+const items = [
+	{
+		title: "Профильно по элайнерам",
+		text: "Главный фокус клиники — лечение прозрачными капами",
+	},
+	{
+		title: "11 лет в ортодонтии",
+		text: "Костина Д. С. — главный врач, ведущий ортодонт",
+	},
+	{
+		title: "Свой КЛКТ и 3D-сканер",
+		text: "Диагностика без направлений в сторонние центры",
+	},
+	{
+		title: "Орточек до старта",
+		text: "3D-план лечения, видите результат до решения",
+	},
+	{
+		title: "7 дней в неделю",
+		text: "Пн–Вс, 9:00–21:00, без выходных",
+	},
+];
+---
+
+<section class="trustbar">
+	<div class="container">
+		<div class="trustbar-grid">
+			{
+				items.map((item) => (
+					<div class="trust-item">
+						<div class="trust-mark" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none">
+								<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.4" />
+								<path
+									d="M8 12.5L11 15L16 9.5"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+						<div class="trust-body">
+							<strong>{item.title}</strong>
+							<span>{item.text}</span>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.trustbar {
+		padding: 28px 0;
+		background: var(--surface);
+		border-top: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.trustbar-grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 22px;
+	}
+
+	.trust-item {
+		display: grid;
+		grid-template-columns: 28px 1fr;
+		gap: 12px;
+		align-items: start;
+	}
+
+	.trust-mark svg {
+		width: 26px;
+		height: 26px;
+		color: var(--gold);
+	}
+
+	.trust-body strong {
+		display: block;
+		font-family: "Nunito", sans-serif;
+		font-size: 14.5px;
+		font-weight: 800;
+		color: var(--ink);
+		line-height: 1.25;
+		margin-bottom: 4px;
+	}
+
+	.trust-body span {
+		display: block;
+		font-size: 12.5px;
+		color: var(--muted);
+		line-height: 1.45;
+	}
+
+	@media (max-width: 1080px) {
+		.trustbar-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (max-width: 720px) {
+		.trustbar-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 16px;
+		}
+	}
+
+	@media (max-width: 460px) {
+		.trustbar-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
