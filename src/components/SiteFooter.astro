@@ -43,17 +43,12 @@ const footerColumns = [
 			<div class="footer-brand">
 				<a class="brand" href="/" aria-label="Грета Орто — на главную">
 					<img
-						src="/greta-orto-mark-header.png"
-						srcset="/greta-orto-mark-header.png 1x, /greta-orto-mark-header@2x.png 2x"
+						class="brand-logo"
+						src="/greta-orto-logo.svg"
 						alt=""
-						width="92"
+						width="200"
 						height="48"
-						class="brand-mark"
 					/>
-					<span class="brand-text">
-						<span class="brand-name">Грета Орто</span>
-						<span class="brand-tagline">центр прозрачной ортодонтии</span>
-					</span>
 				</a>
 				<p class="footer-about">
 					Центр прозрачной ортодонтии в Санкт-Петербурге. Главный фокус — лечение на элайнерах.
@@ -134,37 +129,18 @@ const footerColumns = [
 	.brand {
 		display: inline-flex;
 		align-items: center;
-		gap: 12px;
 		text-decoration: none;
 		margin-bottom: 18px;
 	}
 
-	.brand-mark {
+	.brand-logo {
+		display: block;
+		height: 48px;
 		width: auto;
-		height: 44px;
-		filter: brightness(1.1);
-	}
-
-	.brand-text {
-		display: flex;
-		flex-direction: column;
-		line-height: 1;
-	}
-
-	.brand-name {
-		font-family: "Nunito", system-ui, sans-serif;
-		font-weight: 800;
-		font-size: 20px;
-		color: var(--gold-soft);
-		letter-spacing: -0.3px;
-	}
-
-	.brand-tagline {
-		margin-top: 4px;
-		font-size: 10.5px;
-		color: rgba(255, 253, 250, 0.5);
-		letter-spacing: 0.8px;
-		text-transform: uppercase;
+		max-width: 220px;
+		object-fit: contain;
+		object-position: left center;
+		filter: brightness(1.12);
 	}
 
 	.footer-about {
