@@ -1,7 +1,4 @@
-/**
- * Мобильный клиники (+7 994 416-85-68) — тот же номер в Telegram и Max.
- * Для Max: параметр `phone` без плюса, 11 цифр, начиная с 7.
- */
+/** Мобильный клиники (+7 994 416-85-68) — для ссылки Telegram */
 const mobilePhone11 = "79944168568";
 
 /**
@@ -14,6 +11,6 @@ export const siteLinks = {
 	onlineBooking: "https://gretaorto.ru/zapis-na-priem",
 	/** Telegram: тот же мобильный номер клиники */
 	telegram: `https://t.me/+${mobilePhone11}`,
-	/** Max: по тому же номеру (официальный формат max.ru) */
-	max: `https://max.ru/?phone=${mobilePhone11}`,
+	/** Профиль в MAX (чат с клиникой / врачом) */
+	max: "https://max.ru/u/f9LHodD0cOKJzR6soGSaG3Lvm5bA_evitan48DWBxSu28vDRUeZy4fuMpQ8",
 } as const;
