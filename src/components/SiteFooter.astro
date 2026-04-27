@@ -46,8 +46,8 @@ const footerColumns = [
 						class="brand-logo"
 						src="/greta-orto-logo.svg"
 						alt=""
-						width="200"
-						height="48"
+						width="1000"
+						height="1000"
 					/>
 				</a>
 				<p class="footer-about">
@@ -135,9 +135,9 @@ const footerColumns = [
 
 	.brand-logo {
 		display: block;
-		height: 48px;
+		height: clamp(64px, 4.5vw, 80px);
 		width: auto;
-		max-width: 220px;
+		aspect-ratio: 1;
 		object-fit: contain;
 		object-position: left center;
 		filter: brightness(1.12);

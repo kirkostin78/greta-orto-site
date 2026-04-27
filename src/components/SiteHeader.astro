@@ -27,8 +27,8 @@ const currentPath = new URL(Astro.request.url).pathname;
 				alt=""
 				loading="eager"
 				decoding="sync"
-				width="200"
-				height="48"
+				width="1000"
+				height="1000"
 			/>
 		</a>
 
@@ -162,12 +162,12 @@ const currentPath = new URL(Astro.request.url).pathname;
 		text-decoration: none;
 	}
 
-	/* Исходник: Мастер_Сайт/04_Визуал/02_Логотип_SVG/greta_orto_original-04.svg (прозрачный фон) */
+	/* Исходник: Мастер_Сайт/04_Визуал/02_Логотип_SVG/greta_orto_original-04.svg (viewBox 1:1) */
 	.brand-logo {
 		display: block;
-		height: 48px;
+		height: clamp(76px, 5.5vw, 96px);
 		width: auto;
-		max-width: min(220px, 55vw);
+		aspect-ratio: 1;
 		object-fit: contain;
 		object-position: left center;
 	}
@@ -477,8 +477,7 @@ const currentPath = new URL(Astro.request.url).pathname;
 
 	@media (max-width: 720px) {
 		.brand-logo {
-			height: 40px;
-			max-width: min(200px, 62vw);
+			height: clamp(64px, 18vw, 80px);
 		}
 
 		.header-yandex {
