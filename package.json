@@ -13,9 +13,12 @@
     "import-home-photos": "node scripts/import-home-photos.mjs"
   },
   "dependencies": {
-    "astro": "^6.1.8",
     "@astrojs/mdx": "^5.0.4",
     "@astrojs/sitemap": "^3.7.2",
+    "astro": "^6.1.8",
     "sharp": "^0.34.0"
+  },
+  "devDependencies": {
+    "svg-path-bounds": "^1.0.2"
   }
 }

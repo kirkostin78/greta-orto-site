@@ -27,8 +27,8 @@ const currentPath = new URL(Astro.request.url).pathname;
 				alt=""
 				loading="eager"
 				decoding="sync"
-				width="1000"
-				height="1000"
+				width="808"
+				height="150"
 			/>
 		</a>
 
@@ -145,14 +145,14 @@ const currentPath = new URL(Astro.request.url).pathname;
 	.header-inner {
 		max-width: 1240px;
 		margin: 0 auto;
-		padding: 18px 24px;
+		padding: 8px 20px 10px;
 		display: grid;
 		grid-template-columns: auto minmax(0, 1fr) auto;
 		grid-template-areas:
 			"brand yandex cta"
 			"nav nav cta";
 		align-items: center;
-		gap: 12px 20px;
+		gap: 4px 18px;
 	}
 
 	.brand {
@@ -163,16 +163,14 @@ const currentPath = new URL(Astro.request.url).pathname;
 		flex-shrink: 0;
 	}
 
-	/**
-	 * Крупный знак как у сильных клиник: ~¼ ширины контейнера, до ~300px (в SVG много полей — нужен крупный квадрат).
-	 */
+	/* Логотип горизонтальный; viewBox в SVG обрезан — без квадрата 1:1 */
 	.brand-logo {
 		display: block;
 		flex-shrink: 0;
-		width: min(300px, 28vw);
+		width: min(280px, 36vw);
 		height: auto;
 		max-width: 100%;
-		aspect-ratio: 1;
+		aspect-ratio: 808 / 150;
 		object-fit: contain;
 		object-position: left center;
 	}
@@ -237,7 +235,7 @@ const currentPath = new URL(Astro.request.url).pathname;
 		text-decoration: none;
 		font-weight: 600;
 		font-size: 14px;
-		padding: 6px 0;
+		padding: 4px 0;
 		transition: color 0.2s;
 	}
 
@@ -449,11 +447,11 @@ const currentPath = new URL(Astro.request.url).pathname;
 				"brand cta"
 				"yandex yandex"
 				"nav nav";
-			gap: 10px 12px;
+			gap: 6px 10px;
 		}
 
 		.brand-logo {
-			width: min(280px, 42vw);
+			width: min(260px, 78vw);
 		}
 
 		.header-yandex {
@@ -463,7 +461,7 @@ const currentPath = new URL(Astro.request.url).pathname;
 		.primary-nav {
 			justify-content: flex-start;
 			gap: 6px 18px;
-			padding-top: 4px;
+			padding-top: 2px;
 			border-top: 1px solid rgba(176, 138, 85, 0.12);
 			overflow-x: auto;
 			flex-wrap: nowrap;
@@ -486,7 +484,7 @@ const currentPath = new URL(Astro.request.url).pathname;
 
 	@media (max-width: 720px) {
 		.brand-logo {
-			width: min(260px, 58vw);
+			width: min(240px, 90vw);
 		}
 
 		.header-yandex {
