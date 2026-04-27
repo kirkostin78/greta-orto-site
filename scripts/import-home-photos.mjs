@@ -23,7 +23,7 @@ const ROOT = path.join(
 const OUT = path.join(SITE_ROOT, "public", "media", "home");
 
 const JOBS = [
-	{ out: "hero.jpg", from: path.join("04_Услуги_процессы", "CR6_2039.jpg") },
+	{ out: "hero.jpg", from: path.join("01_Врачи", "CR6_2143.jpg") },
 	{ out: "how-1-consultation.jpg", from: path.join("04_Услуги_процессы", "CR6_2356.jpg") },
 	{ out: "how-2-diagnostics.jpg", from: path.join("04_Услуги_процессы", "CR6_2370.jpg") },
 	{ out: "how-3-plan.jpg", from: path.join("04_Услуги_процессы", "CR6_1961.jpg"), cropBottomRatio: 0.08 },
