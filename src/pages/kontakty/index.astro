@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { siteLinks } from "../../data/siteLinks";
 
 const title = "Контакты — Грета Орто, Санкт-Петербург, ул. Марата 68";
 const description =
@@ -14,7 +15,8 @@ const description =
 		<h1>Контакты</h1>
 		<p class="lead">
 			Запишитесь на первичную консультацию ортодонта (1 час, 1 900 ₽) или задайте вопрос — городской и
-			мобильный телефоны клиники, мобильный с WhatsApp.
+			мобильный телефоны клиники, а также <strong>Telegram</strong> и <strong>Max</strong> (см. шапку
+			сайта).
 		</p>
 
 		<div class="cards">
@@ -23,7 +25,7 @@ const description =
 				<dl>
 					<dt>Городской телефон</dt>
 					<dd><a href="tel:+78125011215">+7 (812) 501-12-15</a></dd>
-					<dt>Мобильный · WhatsApp</dt>
+					<dt>Мобильный</dt>
 					<dd><a href="tel:+79944168568">+7 (994) 416-85-68</a></dd>
 					<dt>Email</dt>
 					<dd><a href="mailto:gretaorto@yandex.ru">gretaorto@yandex.ru</a></dd>
@@ -44,8 +46,16 @@ const description =
 					шагах вы принимаете спокойно, без давления.
 				</p>
 				<p class="contact-actions">
+					<a class="btn" href={siteLinks.onlineBooking} target="_blank" rel="noopener"
+						>Онлайн-запись: врач и время</a
+					>
 					<a class="btn" href="tel:+78125011215">Позвонить</a>
-					<a class="btn btn-outline" href="https://wa.me/79944168568" rel="noopener">Написать в WhatsApp</a>
+					<a class="btn btn-outline" href={siteLinks.telegram} target="_blank" rel="noopener"
+						>Написать в Telegram</a
+					>
+					<a class="btn btn-outline" href={siteLinks.max} target="_blank" rel="noopener"
+						>Написать в Max</a
+					>
 				</p>
 				<p class="muted-note">
 					Пациентам из других городов лечение на элайнерах удобно — визиты раз в 3–6 месяцев можно
