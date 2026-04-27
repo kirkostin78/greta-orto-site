@@ -160,12 +160,17 @@ const currentPath = new URL(Astro.request.url).pathname;
 		display: inline-flex;
 		align-items: center;
 		text-decoration: none;
+		flex-shrink: 0;
 	}
 
-	/* Исходник: Мастер_Сайт/04_Визуал/02_Логотип_SVG/greta_orto_original-04.svg (viewBox 1:1) */
+	/**
+	 * Логотип в SVG — квадрат 1:1 с полями; визуальный знак меньше квадрата.
+	 * Высота больше плашки «Яндекс» (диск 36px + padding ~6+6), чтобы буквы читались не слабее соседнего блока.
+	 */
 	.brand-logo {
 		display: block;
-		height: clamp(76px, 5.5vw, 96px);
+		flex-shrink: 0;
+		height: clamp(108px, 12vw, 140px);
 		width: auto;
 		aspect-ratio: 1;
 		object-fit: contain;
@@ -447,6 +452,10 @@ const currentPath = new URL(Astro.request.url).pathname;
 			gap: 10px 12px;
 		}
 
+		.brand-logo {
+			height: clamp(96px, 18vw, 128px);
+		}
+
 		.header-yandex {
 			justify-self: stretch;
 		}
@@ -477,7 +486,7 @@ const currentPath = new URL(Astro.request.url).pathname;
 
 	@media (max-width: 720px) {
 		.brand-logo {
-			height: clamp(64px, 18vw, 80px);
+			height: clamp(88px, 24vw, 120px);
 		}
 
 		.header-yandex {
