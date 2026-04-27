@@ -1,30 +1,26 @@
 ---
-import MediaPlaceholder from "./MediaPlaceholder.astro";
+import { techPhotos } from "../data/homeMedia";
 
 const techs = [
 	{
 		title: "КЛКТ обеих челюстей",
 		text: "Свой аппарат компьютерной томографии в клинике. Не отправляем пациентов делать снимки в сторонние центры — делаем здесь и сразу.",
-		mediaLabel: "КЛКТ-аппарат",
-		mediaHint: "Общий план аппарата в кабинете",
+		...techPhotos[0],
 	},
 	{
 		title: "3D-сканер",
 		text: "Цифровые оттиски без слепочной массы. Сканирование занимает 10–15 минут, данные сразу идут в орточек-план лечения.",
-		mediaLabel: "3D-сканер",
-		mediaHint: "Сканер в работе крупным планом",
+		...techPhotos[1],
 	},
 	{
 		title: "Орточек (Digital Setup)",
 		text: "Цифровое моделирование лечения. Видите финальный результат и каждый этап до старта — не на словах, а в 3D на экране.",
-		mediaLabel: "Орточек",
-		mediaHint: "Экран с 3D-моделью зубов",
+		...techPhotos[2],
 	},
 	{
 		title: "Микроскоп",
 		text: "Для эндодонтии и сложных терапевтических работ. Точность реставраций на порядок выше, чем без микроскопа.",
-		mediaLabel: "Микроскоп",
-		mediaHint: "Микроскоп в кабинете",
+		...techPhotos[3],
 	},
 ];
 ---
@@ -45,16 +41,22 @@ const techs = [
 				techs.map((t) => (
 					<article class="tech-card">
 						<div class="tech-media">
-							<MediaPlaceholder
-								label={t.mediaLabel}
-								hint={t.mediaHint}
-								aspect="landscape"
-								rounded="md"
-								tone="soft"
-							/>
+							<div class="tech-img-wrap">
+								<img
+									class="tech-img"
+									src={t.src}
+									alt={t.alt}
+									width="800"
+									height="600"
+									loading="lazy"
+									decoding="async"
+								/>
+							</div>
 						</div>
-						<h3>{t.title}</h3>
-						<p>{t.text}</p>
+						<div class="tech-body">
+							<h3>{t.title}</h3>
+							<p>{t.text}</p>
+						</div>
 					</article>
 				))
 			}
@@ -80,13 +82,28 @@ const techs = [
 		width: 200px;
 	}
 
-	.tech-card h3 {
+	.tech-img-wrap {
+		aspect-ratio: 4 / 3;
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		background: var(--surface-soft);
+		border: 1px solid var(--line);
+	}
+
+	.tech-img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+	}
+
+	.tech-body h3 {
 		margin: 4px 0 8px;
 		font-size: 18px;
 		color: var(--ink);
 	}
 
-	.tech-card p {
+	.tech-body p {
 		margin: 0;
 		color: var(--muted);
 		font-size: 14.5px;

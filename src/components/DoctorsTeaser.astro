@@ -1,5 +1,5 @@
 ---
-import MediaPlaceholder from "./MediaPlaceholder.astro";
+import { doctorPhotos } from "../data/homeMedia";
 
 const doctors = [
 	{
@@ -8,6 +8,7 @@ const doctors = [
 		specialties: ["Элайнеры", "Брекет-системы", "Детская ортодонтия"],
 		experience: "22 года в стоматологии · 11 лет в ортодонтии",
 		approach: "Ведёт сложные ортодонтические кейсы взрослых и детей. Лицо клиники по элайнерам.",
+		photo: doctorPhotos[0],
 	},
 	{
 		name: "Костин Кирилл Александрович",
@@ -15,6 +16,7 @@ const doctors = [
 		specialties: ["Виниры", "Коронки", "Протезирование"],
 		experience: "Ведёт ортопедическое направление",
 		approach: "Эстетическая ортопедия после ортодонтии: керамические виниры, коронки, реставрации.",
+		photo: doctorPhotos[1],
 	},
 	{
 		name: "Борисова Анастасия Сергеевна",
@@ -22,6 +24,7 @@ const doctors = [
 		specialties: ["Ортодонтия", "Гигиена"],
 		experience: "Ведёт ортодонтических пациентов",
 		approach: "Сопровождение лечения, профессиональная гигиена.",
+		photo: doctorPhotos[2],
 	},
 	{
 		name: "Давыдова Юлия Радиевна",
@@ -29,15 +32,9 @@ const doctors = [
 		specialties: ["Ортодонтия", "Гигиена"],
 		experience: "Ведёт ортодонтических пациентов",
 		approach: "Сопровождение лечения, профессиональная гигиена.",
+		photo: doctorPhotos[3],
 	},
 ];
-
-const initialsOf = (name) =>
-	name
-		.split(" ")
-		.slice(0, 2)
-		.map((p) => p[0])
-		.join("");
 ---
 
 <section class="doctors section section-warm">
@@ -57,13 +54,17 @@ const initialsOf = (name) =>
 				doctors.map((d) => (
 					<article class="doctor-card">
 						<div class="doctor-photo">
-							<MediaPlaceholder
-								label={initialsOf(d.name)}
-								hint="Портрет врача"
-								aspect="square"
-								rounded="md"
-								tone="cream"
-							/>
+							<div class="doctor-img-wrap">
+								<img
+									class="doctor-img"
+									src={d.photo.src}
+									alt={d.photo.alt}
+									width="560"
+									height="560"
+									loading="lazy"
+									decoding="async"
+								/>
+							</div>
 						</div>
 						<div class="doctor-body">
 							<h3>{d.name}</h3>
@@ -88,6 +89,11 @@ const initialsOf = (name) =>
 				))
 			}
 		</div>
+
+		<p class="doctors-note">
+			Фото подобраны автоматически из архива съёмки. Если нужно поменять портрет местами — напишите,
+			заменим за минуту.
+		</p>
 
 		<p class="doctors-cta">
 			<a href="/ortodont/" class="btn btn-ghost">Подробно о врачах и подходе →</a>
@@ -114,6 +120,22 @@ const initialsOf = (name) =>
 
 	.doctor-photo {
 		width: 140px;
+	}
+
+	.doctor-img-wrap {
+		aspect-ratio: 1;
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		background: var(--cream);
+		border: 1px solid var(--line);
+	}
+
+	.doctor-img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		object-position: center top;
 	}
 
 	.doctor-card h3 {
@@ -173,9 +195,20 @@ const initialsOf = (name) =>
 		line-height: 1.5;
 	}
 
+	.doctors-note {
+		margin: 20px 0 0;
+		text-align: center;
+		font-size: 13px;
+		color: var(--muted);
+		font-style: italic;
+		max-width: 52ch;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
 	.doctors-cta {
 		text-align: center;
-		margin-top: 32px;
+		margin-top: 24px;
 	}
 
 	@media (max-width: 880px) {

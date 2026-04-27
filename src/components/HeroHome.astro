@@ -1,5 +1,5 @@
 ---
-import MediaPlaceholder from "./MediaPlaceholder.astro";
+import { homeHero } from "../data/homeMedia";
 
 const phone = "+7 (812) 501-12-15";
 const phoneTel = "+78125011215";
@@ -39,12 +39,14 @@ const phoneTel = "+78125011215";
 
 			<aside class="hero-side">
 				<div class="hero-media">
-					<MediaPlaceholder
-						label="Фото врача / клиники"
-						hint="Дария Сергеевна Костина за работой или макро элайнера"
-						aspect="portrait"
-						rounded="lg"
-						tone="cream"
+					<img
+						class="hero-img"
+						src={homeHero.src}
+						alt={homeHero.alt}
+						width="800"
+						height="1067"
+						loading="eager"
+						fetchpriority="high"
 					/>
 				</div>
 
@@ -175,6 +177,14 @@ const phoneTel = "+78125011215";
 		box-shadow: var(--shadow-lg);
 		border-radius: var(--radius-lg);
 		overflow: hidden;
+		aspect-ratio: 3 / 4;
+	}
+
+	.hero-img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
 	}
 
 	.hero-promo {

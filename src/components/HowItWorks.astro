@@ -1,5 +1,5 @@
 ---
-import MediaPlaceholder from "./MediaPlaceholder.astro";
+import { howSteps } from "../data/homeMedia";
 
 const steps = [
 	{
@@ -7,32 +7,28 @@ const steps = [
 		title: "Консультация",
 		duration: "1 час · 1 900 ₽",
 		text: "Осмотр, фото-протокол, обсуждение задач. Врач предварительно оценивает варианты лечения и отвечает на ваши вопросы.",
-		mediaLabel: "Шаг 1 — консультация",
-		mediaHint: "Дария Сергеевна с пациентом за столом",
+		...howSteps[0],
 	},
 	{
 		num: "2",
 		title: "Диагностика",
 		duration: "2-й визит · 70 350 ₽",
 		text: "3D-сканирование зубов, КЛКТ обеих челюстей, ТРГ — всё на месте, без направлений. Готовим орточек на основе данных.",
-		mediaLabel: "Шаг 2 — 3D-сканирование",
-		mediaHint: "Сканер в работе или КЛКТ-аппарат",
+		...howSteps[1],
 	},
 	{
 		num: "3",
 		title: "Орточек и план",
 		duration: "Через 7–10 дней",
 		text: "Цифровой план лечения: 3D-мультик, в котором вы видите финальный результат и каждый этап. Фиксируем стоимость на весь курс.",
-		mediaLabel: "Шаг 3 — орточек",
-		mediaHint: "Экран с 3D-моделью зубов, врач показывает",
+		...howSteps[2],
 	},
 	{
 		num: "4",
 		title: "Лечение и ретенция",
 		duration: "9–24 мес.",
 		text: "Активная фаза с контрольными визитами раз в 3–6 мес. После — ретенционная фаза для удержания результата.",
-		mediaLabel: "Шаг 4 — лечение",
-		mediaHint: "Пациент с элайнером в руке",
+		...howSteps[3],
 	},
 ];
 ---
@@ -53,13 +49,17 @@ const steps = [
 				steps.map((s) => (
 					<article class="step-card">
 						<div class="step-media">
-							<MediaPlaceholder
-								label={s.mediaLabel}
-								hint={s.mediaHint}
-								aspect="square"
-								rounded="md"
-								tone="cream"
-							/>
+							<div class="step-img-wrap">
+								<img
+									class="step-img"
+									src={s.src}
+									alt={s.alt}
+									width="800"
+									height="800"
+									loading="lazy"
+									decoding="async"
+								/>
+							</div>
 							<div class="step-num">{s.num}</div>
 						</div>
 						<div class="step-body">
@@ -89,6 +89,21 @@ const steps = [
 
 	.step-media {
 		position: relative;
+	}
+
+	.step-img-wrap {
+		aspect-ratio: 1;
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		background: var(--cream);
+		border: 1px solid var(--line);
+	}
+
+	.step-img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
 	}
 
 	.step-num {
