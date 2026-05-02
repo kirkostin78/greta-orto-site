@@ -11,24 +11,18 @@ const phoneTel = "+78125011215";
 			<div class="hero-copy">
 				<span class="kicker">Центр прозрачной ортодонтии · Санкт-Петербург</span>
 				<h1>
-					Лечение прикуса, <br />
-					которое можно увидеть <span class="accent">до начала</span>
+					Стань лучшей <br />
+					версией <span class="accent">себя</span>
 				</h1>
 				<p class="lead">
-					Главный фокус — лечение на элайнерах. Также делаем брекет-системы, виниры и имплантацию,
-					когда нужны комплексные решения. Перед стартом вы видите цифровой план лечения и фиксированную
-					стоимость до конца курса.
+					Название «Грета Орто» родилось из итальянского <i>«greta»</i> (жемчужина) — символа природной красоты и ценности.
+					Наша миссия — не просто выровнять зубы, а раскрыть вашу индивидуальность.
+					Мы хотим научить Петербург и его гостей красиво улыбаться, создавая улыбки, которые меняют жизнь.
 				</p>
 
-				<ul class="hero-points" aria-label="Что вы получаете">
-					<li><span aria-hidden="true">·</span> 3D-план лечения до старта (орточек)</li>
-					<li><span aria-hidden="true">·</span> Фиксированная стоимость на весь курс</li>
-					<li><span aria-hidden="true">·</span> Один врач ведёт от консультации до ретейнера</li>
-				</ul>
-
 				<div class="hero-cta">
-					<a class="btn" href="/kontakty/">Записаться на консультацию</a>
-					<a class="btn btn-ghost" href="/elajnery/">Узнать про элайнеры</a>
+					<a class="btn" href="/kontakty/">Контакты клиники</a>
+					<a class="btn btn-ghost" href="/o-nas/">О нашем подходе</a>
 				</div>
 
 				<a class="hero-phone" href={`tel:${phoneTel}`}>
@@ -48,26 +42,12 @@ const phoneTel = "+78125011215";
 						loading="eager"
 						fetchpriority="high"
 					/>
-				</div>
-
-				<div class="hero-promo" role="note">
-					<div class="hero-promo-row">
-						<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-							<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" />
-							<path
-								d="M8 12.5L11 15L16 9.5"
-								stroke="currentColor"
-								stroke-width="1.8"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
-						<div>
-							<strong>КЛКТ обеих челюстей в подарок</strong>
-							<span>при старте лечения у нас (после первичной консультации)</span>
-						</div>
+					<div class="hero-founders-caption">
+						Основатели центра прозрачной ортодонтии Грета Орто<br/>
+						Кирилл Александрович и Дария Сергеевна Костины
 					</div>
 				</div>
+
 			</aside>
 		</div>
 	</div>
@@ -187,44 +167,22 @@ const phoneTel = "+78125011215";
 		object-fit: cover;
 	}
 
-	.hero-promo {
-		max-width: 460px;
-		margin-left: auto;
-		width: 100%;
-		padding: 16px 20px;
-		background: var(--surface);
-		border: 1px solid var(--line);
-		border-radius: var(--radius-md);
-		box-shadow: var(--shadow-sm);
-	}
-
-	.hero-promo-row {
-		display: grid;
-		grid-template-columns: 28px 1fr;
-		gap: 12px;
-		align-items: start;
-	}
-
-	.hero-promo-row svg {
-		width: 28px;
-		height: 28px;
-		color: var(--gold);
-		flex-shrink: 0;
-	}
-
-	.hero-promo-row strong {
-		display: block;
-		font-family: "Nunito", sans-serif;
-		font-size: 15px;
+	.hero-founders-caption {
+		position: absolute;
+		top: 16px;
+		left: 16px;
+		right: 16px;
+		padding: 12px 16px;
+		background: rgba(255, 253, 250, 0.85);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		border-radius: 12px;
+		font-size: 12px;
+		line-height: 1.4;
 		color: var(--ink);
-		margin-bottom: 2px;
-	}
-
-	.hero-promo-row span {
-		display: block;
-		font-size: 13px;
-		color: var(--muted);
-		line-height: 1.5;
+		text-align: center;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.5);
 	}
 
 	@media (max-width: 880px) {
@@ -236,8 +194,7 @@ const phoneTel = "+78125011215";
 			order: -1;
 		}
 
-		.hero-media,
-		.hero-promo {
+		.hero-media {
 			max-width: 100%;
 			margin-left: 0;
 		}
