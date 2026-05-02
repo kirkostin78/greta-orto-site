@@ -34,3 +34,7 @@ Thumbs.db
 # Cloudflare Pages local
 .wrangler/
 
+
+.dev.vars*
+!.dev.vars.example
+!.env.example
